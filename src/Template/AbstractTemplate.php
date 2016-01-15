@@ -122,28 +122,4 @@ abstract class AbstractTemplate implements TemplateInterface {
 
 		return $view_root . '/templates/' . $context['format'] . '/' . $this->get_view_name();
 	}
-
-	/**
-	 * Validate the content.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param string $content Content to validate.
-	 * @return mixed Validated content.
-	 */
-	public function validate( $content ) {
-		return $content;
-	}
-
-	/**
-	 * Sanitize the content.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param string $content Content to sanitize.
-	 * @return mixed Sanitized content.
-	 */
-	public function sanitize( $content ) {
-		return $content;
-	}
 }
