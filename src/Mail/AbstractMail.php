@@ -194,7 +194,7 @@ abstract class AbstractMail implements MailInterface {
 			if ( array_key_exists( $section, $this->section_content ) ) {
 				$content = $this->section_content[ $section ];
 			}
-			$context['sections'][ $section ] = $section_factory->create( $section, $content );
+			$context['sections'][ $section ] = $section_factory->create( $section, [ $section, $content ] );
 		}
 
 		$context['format'] = $this->get_format();

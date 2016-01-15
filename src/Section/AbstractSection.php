@@ -58,12 +58,16 @@ abstract class AbstractSection implements SectionInterface {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param ConfigInterface $config  Configuration settings.
-	 * @param string          $content Content of the section.
+	 * @param ConfigInterface $config       Configuration settings.
+	 * @param array           $arguments    Arguments that are passed through
+	 *                                      the constructor. Contained
+	 *                                      elements: string $section, string
+	 *                                      $content
 	 */
-	public function __construct( $config, $content ) {
+	public function __construct( $config, $arguments ) {
 		$this->config = $config;
-		$this->set_view_name();
+		list( $section, $content ) = $arguments;
+		$this->set_view_name( $section );
 		$this->content = $content;
 	}
 
@@ -71,8 +75,10 @@ abstract class AbstractSection implements SectionInterface {
 	 * Set the name of the View to use for rendering.
 	 *
 	 * @since 1.0.0
+	 *
+	 * @param string $section Optional. Name of the section.
 	 */
-	abstract protected function set_view_name();
+	abstract protected function set_view_name( $section = null );
 
 	/**
 	 * Set the name of the View to use for rendering.

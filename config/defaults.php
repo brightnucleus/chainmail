@@ -44,11 +44,11 @@ return [
 		'HeroSidebarTemplate' => '\BrightNucleus\ChainMail\Template\HeroSidebarTemplate',
 	],
 	'sections'         => [
-		'HeaderSection'  => '\BrightNucleus\ChainMail\Section\HeaderSection',
-		'BodySection'    => '\BrightNucleus\ChainMail\Section\BodySection',
-		'FooterSection'  => '\BrightNucleus\ChainMail\Section\FooterSection',
-		'HeroSection'    => '\BrightNucleus\ChainMail\Section\HeroSection',
-		'SidebarSection' => '\BrightNucleus\ChainMail\Section\SidebarSection',
+		'HeaderSection'  => '\BrightNucleus\ChainMail\Section\GenericSection',
+		'BodySection'    => '\BrightNucleus\ChainMail\Section\GenericSection',
+		'FooterSection'  => '\BrightNucleus\ChainMail\Section\GenericSection',
+		'HeroSection'    => '\BrightNucleus\ChainMail\Section\GenericSection',
+		'SidebarSection' => '\BrightNucleus\ChainMail\Section\GenericSection',
 	],
 	'view_types'       => [
 		'PHPView' => '\BrightNucleus\ChainMail\View\PHPView',
