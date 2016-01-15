@@ -1,0 +1,21 @@
+{
+	"name": "brightnucleus/chainmail",
+	"description": "Mailing library that handles assembling, rendering and sending responsive emails that are properly displayed in all the major email clients.",
+	"license": "GPL-2.0+",
+	"authors": [
+		{
+			"name": "Alain Schlesser",
+			"email": "alain.schlesser@gmail.com"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"BrightNucleus\\ChainMail\\": "src/"
+		}
+	},
+	"require": {
+	},
+	"require-dev": {
+		"phpunit/phpunit": "~5.1"
+	}
+}

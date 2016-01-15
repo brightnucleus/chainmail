@@ -1,0 +1,22 @@
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.8/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true">
+    <testsuites>
+        <testsuite name="chainmail">
+            <file>tests/ChainMailTest.php</file>
+        </testsuite>
+        <testsuite name="renderer">
+        </testsuite>
+        <testsuite name="sanitizer">
+        </testsuite>
+        <testsuite name="section">
+        </testsuite>
+        <testsuite name="support">
+        </testsuite>
+        <testsuite name="template">
+        </testsuite>
+        <testsuite name="validator">
+        </testsuite>
+    </testsuites>
+</phpunit>
