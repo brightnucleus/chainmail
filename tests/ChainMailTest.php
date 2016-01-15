@@ -75,7 +75,11 @@ class ChainMailTest extends PHPUnit_Framework_TestCase {
 	public function test_mail_rendering_output( $format, $template, $expected_output ) {
 		$chainmail = new ChainMail();
 		$mail      = $chainmail->create_mail( $format, $template );
+		$mail->add_section( 'HeaderSection', 'This is the header of the email.' );
+		$mail->add_section( 'HeroSection', 'This is the hero section of the email.' );
 		$mail->add_section( 'BodySection', 'This is the body of the email.' );
+		$mail->add_section( 'SidebarSection', 'This is the sidebar of the email.' );
+		$mail->add_section( 'FooterSection', 'This is the footer of the email.' );
 		$output = $mail->render( [ ] );
 		$this->assertRegExp( $expected_output, $output );
 	}
@@ -90,14 +94,14 @@ class ChainMailTest extends PHPUnit_Framework_TestCase {
 	public function mail_rendering_output_data_provider() {
 		return [
 			// string $format, string $template, string $expected_output
-			[ 'html', 'BasicTemplate', '|<div class="body">This is the body of the email.</div>|' ],
-			[ 'text', 'BasicTemplate', '|This is the body of the email.|' ],
-			[ 'html', 'HeroTemplate', '|<div class="body">This is the body of the email.</div>|' ],
-			[ 'text', 'HeroTemplate', '|This is the body of the email.|' ],
-			[ 'html', 'SidebarTemplate', '|<div class="body">This is the body of the email.</div>|' ],
-			[ 'text', 'SidebarTemplate', '|This is the body of the email.|' ],
-			[ 'html', 'HeroSidebarTemplate', '|<div class="body">This is the body of the email.</div>|' ],
-			[ 'text', 'HeroSidebarTemplate', '|This is the body of the email.|' ],
+			[ 'html', 'BasicTemplate', '|^<html>.*This is the header of the email\..*This is the body of the email\..*This is the footer of the email\..*</html>$|s' ],
+			[ 'text', 'BasicTemplate', '|^This is the header of the email\..*This is the body of the email\..*This is the footer of the email\.$|s' ],
+			[ 'html', 'HeroTemplate', '|^<html>.*This is the header of the email\..*This is the hero section of the email\..*This is the body of the email\..*This is the footer of the email\..*</html>$|s' ],
+			[ 'text', 'HeroTemplate', '|^This is the header of the email\..*This is the hero section of the email\..*This is the body of the email\..*This is the footer of the email\.$|s' ],
+			[ 'html', 'SidebarTemplate', '|^<html>.*This is the header of the email\..*This is the body of the email\..*This is the sidebar of the email\..*This is the footer of the email\..*</html>$|s' ],
+			[ 'text', 'SidebarTemplate', '|^This is the header of the email\..*This is the body of the email\..*This is the sidebar of the email\..*This is the footer of the email\.$|s' ],
+			[ 'html', 'HeroSidebarTemplate', '|^<html>.*This is the header of the email\..*This is the hero section of the email\..*This is the body of the email\..*This is the sidebar of the email\..*This is the footer of the email\..*</html>$|s' ],
+			[ 'text', 'HeroSidebarTemplate', '|^This is the header of the email\..*This is the hero section of the email\..*This is the body of the email\..*This is the sidebar of the email\..*This is the footer of the email\.$|s' ],
 		];
 	}
 }
