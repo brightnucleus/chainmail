@@ -19,6 +19,6 @@ namespace BrightNucleus\ChainMail;
  * @package BrightNucleus\ChainMail
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
-interface SectionInterface extends Renderable, Validatable, Sanitizable {
+interface SectionInterface extends Renderable {
 
 }

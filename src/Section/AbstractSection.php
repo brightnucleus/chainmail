@@ -64,7 +64,7 @@ abstract class AbstractSection implements SectionInterface {
 	public function __construct( $config, $content ) {
 		$this->config = $config;
 		$this->set_view_name();
-		$this->content = $this->validate( $content );
+		$this->content = $content;
 	}
 
 	/**
@@ -102,9 +102,7 @@ abstract class AbstractSection implements SectionInterface {
 		$view_factory = new Factory( $this->config, 'view_types' );
 		$view         = $view_factory->create( $view_type, $view_location );
 
-		$content = $this->sanitize( $this->content );
-
-		return $view->render( $context, $content );
+		return $view->render( $context, $this->content );
 	}
 
 	/**
@@ -119,29 +117,5 @@ abstract class AbstractSection implements SectionInterface {
 		$view_root = $this->config->get_key( 'views_root' );
 
 		return $view_root . '/sections/' . $context['format'] . '/' . $this->get_view_name();
-	}
-
-	/**
-	 * Validate the content.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param string $content Content to validate.
-	 * @return mixed Validated content.
-	 */
-	public function validate( $content ) {
-		return $content;
-	}
-
-	/**
-	 * Sanitize the content.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param string $content Content to sanitize.
-	 * @return mixed Sanitized content.
-	 */
-	public function sanitize( $content ) {
-		return $content;
 	}
 }

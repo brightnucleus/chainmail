@@ -19,7 +19,7 @@ namespace BrightNucleus\ChainMail;
  * @package BrightNucleus\ChainMail
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
-interface TemplateInterface extends Renderable, Validatable, Sanitizable {
+interface TemplateInterface extends Renderable {
 
 	/**
 	 * Get an array of Sections that are used by this template.

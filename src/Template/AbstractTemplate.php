@@ -100,7 +100,13 @@ abstract class AbstractTemplate implements TemplateInterface {
 		$view_factory = new Factory( $this->config, 'view_types' );
 		$view         = $view_factory->create( $view_type, $view_location );
 
-		return $view->render( $context );
+		$sanitizer_type    = $this->config->get_key( 'formats' )[ $context['format'] ]['sanitizer'];
+		$sanitizer_factory = new Factory( $this->config, 'sanitizers' );
+		$sanitizer         = $sanitizer_factory->create( $sanitizer_type );
+
+		$output = $view->render( $context );
+
+		return $sanitizer->sanitize( $output, $context );
 	}
 
 	/**

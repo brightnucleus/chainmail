@@ -19,7 +19,7 @@ namespace BrightNucleus\ChainMail\Sanitizer;
  * @package BrightNucleus\ChainMail\Sanitizer
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
-class HTMLSanitize extends AbstractSanitizer {
+class HTMLSanitizer extends AbstractSanitizer {
 
 	/**
 	 * Sanitize the content for a given context.
