@@ -46,24 +46,30 @@ abstract class AbstractTemplate implements TemplateInterface
     protected $config;
 
     /**
-     * Instantiate an AbstractTemplate object.
+     * Instantiate a AbstractTemplate object.
      *
      * @since 1.0.0
      *
-     * @param ConfigInterface $config
+     * @param ConfigInterface $config       Configuration settings.
+     * @param array           $arguments    Arguments that are passed through
+     *                                      the constructor. Contained
+     *                                      elements: string $template
      */
-    public function __construct(ConfigInterface $config)
+    public function __construct($config, $arguments)
     {
         $this->config = $config;
-        $this->setViewName();
+        list($template) = $arguments;
+        $this->setViewName($template);
     }
 
     /**
      * Set the name of the View to use for rendering.
      *
      * @since 1.0.0
+     *
+     * @param string $template Optional. Name of the template.
      */
-    abstract protected function setViewName();
+    abstract protected function setViewName($template = null);
 
     /**
      * Get the name of the View to use for rendering.

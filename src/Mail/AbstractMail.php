@@ -162,7 +162,7 @@ abstract class AbstractMail implements MailInterface
     {
         $templateFactory = new Factory($this->config, 'templates');
 
-        return $templateFactory->create($template);
+        return $templateFactory->create($template, [$template]);
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 /**
- * HeroTemplate
+ * GenericTemplate
  *
  * @package   brightnucleus/chainmail
  * @author    Alain Schlesser <alain.schlesser@gmail.com>
@@ -11,25 +11,33 @@
 
 namespace BrightNucleus\ChainMail\Template;
 
+use RuntimeException;
+
 /**
- * Class HeroTemplate
+ * Class GenericTemplate
  *
  * @since   1.0.0
  *
  * @package BrightNucleus\ChainMail\Template
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
-class HeroTemplate extends AbstractTemplate
+class GenericTemplate extends AbstractTemplate
 {
 
     /**
      * Set the name of the View to use for rendering.
      *
      * @since 1.0.0
+     *
+     * @param string $template Optional. Name of the template.
+     * @throws RuntimeException
      */
-    protected function setViewName()
+    protected function setViewName($template = null)
     {
-        $this->viewName = 'HeroTemplate';
+        if ( ! $template) {
+            throw new RuntimeException('Initialised GenericSection without passing it a template name.');
+        }
+        $this->viewName = $template;
     }
 
     /**
@@ -41,11 +49,6 @@ class HeroTemplate extends AbstractTemplate
      */
     public function getUsedSections()
     {
-        return [
-            'HeaderSection',
-            'HeroSection',
-            'BodySection',
-            'FooterSection',
-        ];
+        return $this->config['used_sections'][$this->getViewName()];
     }
 }

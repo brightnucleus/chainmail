@@ -38,10 +38,36 @@ return [
         'TextSanitizer' => '\BrightNucleus\ChainMail\Sanitizer\TextSanitizer',
     ],
     'templates'        => [
-        'BasicTemplate'       => '\BrightNucleus\ChainMail\Template\BasicTemplate',
-        'HeroTemplate'        => '\BrightNucleus\ChainMail\Template\HeroTemplate',
-        'SidebarTemplate'     => '\BrightNucleus\ChainMail\Template\SidebarTemplate',
-        'HeroSidebarTemplate' => '\BrightNucleus\ChainMail\Template\HeroSidebarTemplate',
+        'BasicTemplate'       => '\BrightNucleus\ChainMail\Template\GenericTemplate',
+        'HeroTemplate'        => '\BrightNucleus\ChainMail\Template\GenericTemplate',
+        'SidebarTemplate'     => '\BrightNucleus\ChainMail\Template\GenericTemplate',
+        'HeroSidebarTemplate' => '\BrightNucleus\ChainMail\Template\GenericTemplate',
+    ],
+    'used_sections'    => [
+        'BasicTemplate'       => [
+            'HeaderSection',
+            'BodySection',
+            'FooterSection',
+        ],
+        'HeroTemplate'        => [
+            'HeaderSection',
+            'HeroSection',
+            'BodySection',
+            'FooterSection',
+        ],
+        'SidebarTemplate'     => [
+            'HeaderSection',
+            'BodySection',
+            'SidebarSection',
+            'FooterSection',
+        ],
+        'HeroSidebarTemplate' => [
+            'HeaderSection',
+            'HeroSection',
+            'BodySection',
+            'SidebarSection',
+            'FooterSection',
+        ],
     ],
     'sections'         => [
         'HeaderSection'  => '\BrightNucleus\ChainMail\Section\GenericSection',
