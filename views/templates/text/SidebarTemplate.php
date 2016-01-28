@@ -20,7 +20,7 @@ $sidebar = $context['sections']['SidebarSection'];
 /** @var SectionInterface $footer */
 $footer = $context['sections']['FooterSection'];
 
-echo $header->render( $context );
-echo $body->render( $context );
-echo $sidebar->render( $context );
-echo $footer->render( $context );
+echo $header->render($context);
+echo $body->render($context);
+echo $sidebar->render($context);
+echo $footer->render($context);

@@ -26,10 +26,10 @@ $footer = $context['sections']['FooterSection'];
 <html>
 <head></head>
 <body>
-<?php echo $header->render( $context ); ?>
-<?php echo $hero->render( $context ); ?>
-<?php echo $body->render( $context ); ?>
-<?php echo $sidebar->render( $context ); ?>
-<?php echo $footer->render( $context ); ?>
+<?php echo $header->render($context); ?>
+<?php echo $hero->render($context); ?>
+<?php echo $body->render($context); ?>
+<?php echo $sidebar->render($context); ?>
+<?php echo $footer->render($context); ?>
 </body>
 </html>

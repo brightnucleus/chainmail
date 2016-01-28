@@ -20,7 +20,7 @@ $body = $context['sections']['BodySection'];
 /** @var SectionInterface $footer */
 $footer = $context['sections']['FooterSection'];
 
-echo $header->render( $context );
-echo $hero->render( $context );
-echo $body->render( $context );
-echo $footer->render( $context );
+echo $header->render($context);
+echo $hero->render($context);
+echo $body->render($context);
+echo $footer->render($context);

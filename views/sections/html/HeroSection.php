@@ -11,8 +11,8 @@
 
 namespace BrightNucleus\ChainMail;
 
-if ( ! $content ) {
-	return;
+if ( ! $content) {
+    return;
 }
 ?>
 <div class="hero"><?php echo $content; ?></div>
