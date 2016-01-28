@@ -70,7 +70,7 @@ abstract class AbstractTemplate implements TemplateInterface
      *
      * @return string Name of the template.
      */
-    protected function getTemplateName()
+    public function getTemplateName()
     {
         return $this->templateName;
     }

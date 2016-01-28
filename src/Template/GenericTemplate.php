@@ -11,8 +11,6 @@
 
 namespace BrightNucleus\ChainMail\Template;
 
-use RuntimeException;
-
 /**
  * Class GenericTemplate
  *

@@ -11,8 +11,6 @@
 
 namespace BrightNucleus\ChainMail\Section;
 
-use RuntimeException;
-
 /**
  * Class GenericSection
  *

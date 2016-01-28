@@ -100,7 +100,7 @@ abstract class AbstractSection implements SectionInterface
      *
      * @return string Name of the section.
      */
-    protected function getSectionName()
+    public function getSectionName()
     {
         return $this->sectionName;
     }

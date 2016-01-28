@@ -22,4 +22,12 @@ namespace BrightNucleus\ChainMail;
 interface SectionInterface extends Renderable
 {
 
+    /**
+     * Get the name of the Section.
+     *
+     * @since 1.0.0
+     *
+     * @return string Name of the section.
+     */
+    public function getSectionName();
 }

@@ -30,4 +30,13 @@ interface TemplateInterface extends Renderable
      * @return array Sections that are used by this template.
      */
     public function getUsedSections();
+
+    /**
+     * Get the name of the Template.
+     *
+     * @since 1.0.0
+     *
+     * @return string Name of the template.
+     */
+    public function getTemplateName();
 }
