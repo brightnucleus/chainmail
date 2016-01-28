@@ -19,18 +19,20 @@ namespace BrightNucleus\ChainMail\Validator;
  * @package BrightNucleus\ChainMail\Validator
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
-class HTMLValidator extends AbstractValidator {
+class HTMLValidator extends AbstractValidator
+{
 
-	/**
-	 * Validate the content for a given context.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param string $content Content to validate.
-	 * @param array  $context Context in which to validate.
-	 * @return string Validated content.
-	 */
-	public function validate( $content, array $context ) {
-		return $content;
-	}
+    /**
+     * Validate the content for a given context.
+     *
+     * @since 1.0.0
+     *
+     * @param string $content Content to validate.
+     * @param array  $context Context in which to validate.
+     * @return string Validated content.
+     */
+    public function validate($content, array $context)
+    {
+        return $content;
+    }
 }

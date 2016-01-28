@@ -24,55 +24,62 @@ use BrightNucleus\ChainMail\Support\ConfigInterface;
  * @package BrightNucleus\ChainMail
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
-class ChainMail {
+class ChainMail
+{
 
-	const DEFAULT_CONFIG = __DIR__ . '/../config/defaults.php';
+    const DEFAULT_CONFIG = __DIR__ . '/../config/defaults.php';
 
-	/**
-	 * Configuration Settings.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @var ConfigInterface
-	 */
-	protected $config;
+    /**
+     * Configuration Settings.
+     *
+     * @since 1.0.0
+     *
+     * @var ConfigInterface
+     */
+    protected $config;
 
-	/**
-	 * Instantiate a ChainMail object.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param ConfigInterface|null $config Optional. Configuration settings.
-	 */
-	public function __construct( ConfigInterface $config = null ) {
+    /**
+     * Instantiate a ChainMail object.
+     *
+     * @since 1.0.0
+     *
+     * @param ConfigInterface|null $config Optional. Configuration settings.
+     */
+    public function __construct(ConfigInterface $config = null)
+    {
 
-		$defaults = new Config( include( ChainMail::DEFAULT_CONFIG ) );
+        $defaults = new Config(include(ChainMail::DEFAULT_CONFIG));
 
-		if ( ! $config ) {
-			$this->config = $defaults;
-			return;
-		}
+        if ( ! $config) {
+            $this->config = $defaults;
 
-		$this->config = new Config( array_merge( (array) $defaults, (array) $config ) );
-	}
+            return;
+        }
 
-	/**
-	 * Create a new mail object.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param string|null                   $format   Optional. Format to use.
-	 * @param string|TemplateInterface|null $template Optional. Template to be
-	 *                                                used.
-	 * @return MailInterface
-	 * @throws RuntimeException
-	 */
-	public function create_mail( $format = null, $template = null ) {
-		$mail_factory = new Factory( $this->config, 'mails' );
-		$mail_class   = $this->config->get_key( 'formats' )[ $format ]['mail'];
-		$mail         = $mail_factory->create( $mail_class );
-		$mail->set_template( $template );
+        $this->config = new Config(array_merge(
+                (array)$defaults,
+                (array)$config)
+        );
+    }
 
-		return $mail;
-	}
+    /**
+     * Create a new mail object.
+     *
+     * @since 1.0.0
+     *
+     * @param string|null                   $format   Optional. Format to use.
+     * @param string|TemplateInterface|null $template Optional. Template to be
+     *                                                used.
+     * @return MailInterface
+     * @throws RuntimeException
+     */
+    public function createMail($format = null, $template = null)
+    {
+        $mail_factory = new Factory($this->config, 'mails');
+        $mail_class   = $this->config->getKey('formats')[$format]['mail'];
+        $mail         = $mail_factory->create($mail_class);
+        $mail->setTemplate($template);
+
+        return $mail;
+    }
 }

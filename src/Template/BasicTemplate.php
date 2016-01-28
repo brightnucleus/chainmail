@@ -19,25 +19,32 @@ namespace BrightNucleus\ChainMail\Template;
  * @package BrightNucleus\ChainMail\Template
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
-class BasicTemplate extends AbstractTemplate {
+class BasicTemplate extends AbstractTemplate
+{
 
-	/**
-	 * Set the name of the View to use for rendering.
-	 *
-	 * @since 1.0.0
-	 */
-	protected function set_view_name() {
-		$this->view_name = 'BasicTemplate';
-	}
+    /**
+     * Set the name of the View to use for rendering.
+     *
+     * @since 1.0.0
+     */
+    protected function setViewName()
+    {
+        $this->viewName = 'BasicTemplate';
+    }
 
-	/**
-	 * Get an array of Sections that are used by this template.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @return array Sections that are used by this template.
-	 */
-	public function get_used_sections() {
-		return [ 'HeaderSection', 'BodySection', 'FooterSection' ];
-	}
+    /**
+     * Get an array of Sections that are used by this template.
+     *
+     * @since 1.0.0
+     *
+     * @return array Sections that are used by this template.
+     */
+    public function getUsedSections()
+    {
+        return [
+            'HeaderSection',
+            'BodySection',
+            'FooterSection',
+        ];
+    }
 }

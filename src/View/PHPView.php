@@ -19,24 +19,26 @@ namespace BrightNucleus\ChainMail\View;
  * @package BrightNucleus\ChainMail\Support
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
-class PHPView extends AbstractView {
+class PHPView extends AbstractView
+{
 
-	/**
-	 * Render the current Renderable for a given context.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param array  $context The context in which to render the Renderable.
-	 * @param string $content Optional. The content that the view should
-	 *                        represent.
-	 * @return string Rendered output of the Renderable.
-	 */
-	public function render( array $context, $content = null ) {
+    /**
+     * Render the current Renderable for a given context.
+     *
+     * @since 1.0.0
+     *
+     * @param array  $context The context in which to render the Renderable.
+     * @param string $content Optional. The content that the view should
+     *                        represent.
+     * @return string Rendered output of the Renderable.
+     */
+    public function render(array $context, $content = null)
+    {
 
-		ob_start();
+        ob_start();
 
-		include $this->view_location . '.php';
+        include $this->viewLocation . '.php';
 
-		return ob_get_clean();
-	}
+        return ob_get_clean();
+    }
 }

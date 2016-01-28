@@ -21,6 +21,7 @@ use BrightNucleus\ChainMail\SanitizerInterface;
  * @package BrightNucleus\ChainMail\Sanitizer
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
-abstract class AbstractSanitizer implements SanitizerInterface {
+abstract class AbstractSanitizer implements SanitizerInterface
+{
 
 }

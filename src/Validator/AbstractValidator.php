@@ -21,6 +21,7 @@ use BrightNucleus\ChainMail\ValidatorInterface;
  * @package BrightNucleus\ChainMail\Validator
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
-abstract class AbstractValidator implements ValidatorInterface {
+abstract class AbstractValidator implements ValidatorInterface
+{
 
 }

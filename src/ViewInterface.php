@@ -21,6 +21,7 @@ use BrightNucleus\ChainMail\Renderable;
  * @package BrightNucleus\ChainMail\Support
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
-interface ViewInterface extends Renderable {
+interface ViewInterface extends Renderable
+{
 
 }

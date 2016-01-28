@@ -19,26 +19,29 @@ namespace BrightNucleus\ChainMail\Mail;
  * @package BrightNucleus\ChainMail
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
-class HTMLMail extends AbstractMail {
+class HTMLMail extends AbstractMail
+{
 
-	/**
-	 * Set the format of the mail.
-	 *
-	 * @since 1.0.0
-	 */
-	protected function set_format() {
-		$this->format = 'html';
-	}
+    /**
+     * Set the format of the mail.
+     *
+     * @since 1.0.0
+     */
+    protected function setFormat()
+    {
+        $this->format = 'html';
+    }
 
-	/**
-	 * Set the context of the renderer.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param array $context Context to set/modify.
-	 * @return array Updated context.
-	 */
-	protected function set_context( array $context ) {
-		return $context;
-	}
+    /**
+     * Set the context of the renderer.
+     *
+     * @since 1.0.0
+     *
+     * @param array $context Context to set/modify.
+     * @return array Updated context.
+     */
+    protected function setContext(array $context)
+    {
+        return $context;
+    }
 }

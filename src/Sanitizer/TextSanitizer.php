@@ -19,18 +19,20 @@ namespace BrightNucleus\ChainMail\Sanitizer;
  * @package BrightNucleus\ChainMail\Sanitizer
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
-class TextSanitizer extends AbstractSanitizer {
+class TextSanitizer extends AbstractSanitizer
+{
 
-	/**
-	 * Sanitize the content for a given context.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param string $content Content to sanitize.
-	 * @param array  $context Context in which to sanitize.
-	 * @return string Sanitized content.
-	 */
-	public function sanitize( $content, array $context ) {
-		return $content;
-	}
+    /**
+     * Sanitize the content for a given context.
+     *
+     * @since 1.0.0
+     *
+     * @param string $content Content to sanitize.
+     * @param array  $context Context in which to sanitize.
+     * @return string Sanitized content.
+     */
+    public function sanitize($content, array $context)
+    {
+        return $content;
+    }
 }
