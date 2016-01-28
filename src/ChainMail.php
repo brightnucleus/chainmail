@@ -45,11 +45,15 @@ class ChainMail {
 	 * @param ConfigInterface|null $config Optional. Configuration settings.
 	 */
 	public function __construct( ConfigInterface $config = null ) {
+
+		$defaults = new Config( include( ChainMail::DEFAULT_CONFIG ) );
+
 		if ( ! $config ) {
-			$config = new Config( include( ChainMail::DEFAULT_CONFIG ) );
+			$this->config = $defaults;
+			return;
 		}
 
-		$this->config = $config;
+		$this->config = new Config( array_merge( (array) $defaults, (array) $config ) );
 	}
 
 	/**
