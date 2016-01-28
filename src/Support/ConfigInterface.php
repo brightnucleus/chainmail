@@ -11,6 +11,8 @@
 
 namespace BrightNucleus\ChainMail\Support;
 
+use ArrayAccess;
+
 /**
  * Interface ConfigInterface
  *
@@ -18,7 +20,7 @@ namespace BrightNucleus\ChainMail\Support;
  *
  * @author Alain Schlesser <alain.schlesser@gmail.com>
  */
-interface ConfigInterface
+interface ConfigInterface extends ArrayAccess
 {
 
     /**
