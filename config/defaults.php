@@ -113,7 +113,7 @@ return [
     'templates'           => [
         'BasicTemplate'       => [
             'class_name'    => '\BrightNucleus\ChainMail\Template\GenericTemplate',
-            'used_sections' => [
+            'sections' => [
                 'HeaderSection',
                 'BodySection',
                 'FooterSection',
@@ -123,7 +123,7 @@ return [
         ],
         'HeroTemplate'        => [
             'class_name'    => '\BrightNucleus\ChainMail\Template\GenericTemplate',
-            'used_sections' => [
+            'sections' => [
                 'HeaderSection',
                 'HeroTemplate',
                 'BodySection',
@@ -134,7 +134,7 @@ return [
         ],
         'SidebarTemplate'     => [
             'class_name'    => '\BrightNucleus\ChainMail\Template\GenericTemplate',
-            'used_sections' => [
+            'sections' => [
                 'HeaderSection',
                 'BodySection',
                 'SidebarTemplate',
@@ -145,7 +145,7 @@ return [
         ],
         'HeroSidebarTemplate' => [
             'class_name'    => '\BrightNucleus\ChainMail\Template\GenericTemplate',
-            'used_sections' => [
+            'sections' => [
                 'HeaderSection',
                 'HeroTemplate',
                 'BodySection',
