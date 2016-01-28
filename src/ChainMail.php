@@ -116,4 +116,23 @@ class ChainMail
 
         return $template->getUsedSections();
     }
+
+    /**
+     * Render a all used sections.
+     *
+     * @since 1.0.0
+     *
+     * @param array $context The context in which to render the section.
+     * @return string Rendered HTML.
+     */
+    public static function renderSections($context)
+    {
+        $output = '';
+
+        foreach (ChainMail::getUsedSections($context) as $section) {
+            $output .= ChainMail::renderSection($section, $context);
+        }
+
+        return $output;
+    }
 }

@@ -11,6 +11,4 @@
 
 namespace BrightNucleus\ChainMail;
 
-foreach (ChainMail::getUsedSections($context) as $section) {
-    echo ChainMail::renderSection($section, $context);
-}
+echo ChainMail::renderSections($context);
