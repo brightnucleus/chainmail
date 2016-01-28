@@ -99,4 +99,21 @@ class ChainMail
 
         return $section->render($context);
     }
+
+    /**
+     * Get an array of strings representing the sections that are used by the
+     * template.
+     *
+     * @since 1.0.0
+     *
+     * @param array $context The context in which to render the section.
+     * @return array Array of strings with section types.
+     */
+    public static function getUsedSections($context)
+    {
+        /** @var TemplateInterface $template */
+        $template = $context['template'];
+
+        return $template->getUsedSections();
+    }
 }
