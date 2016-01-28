@@ -24,19 +24,4 @@ use RuntimeException;
 class GenericSection extends AbstractSection
 {
 
-    /**
-     * Set the name of the View to use for rendering.
-     *
-     * @since 1.0.0
-     *
-     * @param string $section Optional. Name of the section.
-     * @throws RuntimeException
-     */
-    protected function setViewName($section = null)
-    {
-        if ( ! $section) {
-            throw new RuntimeException('Initialised GenericSection without passing it a section name.');
-        }
-        $this->viewName = $section;
-    }
 }

@@ -127,7 +127,7 @@ return [
             'class_name'    => '\BrightNucleus\ChainMail\Template\GenericTemplate',
             'sections'      => [
                 'HeaderSection',
-                'HeroTemplate',
+                'HeroSection',
                 'BodySection',
                 'FooterSection',
             ],
@@ -139,7 +139,7 @@ return [
             'sections'      => [
                 'HeaderSection',
                 'BodySection',
-                'SidebarTemplate',
+                'SidebarSection',
                 'FooterSection',
             ],
             'view_name'     => 'GenericTemplate',
@@ -149,9 +149,9 @@ return [
             'class_name'    => '\BrightNucleus\ChainMail\Template\GenericTemplate',
             'sections'      => [
                 'HeaderSection',
-                'HeroTemplate',
+                'HeroSection',
                 'BodySection',
-                'SidebarTemplate',
+                'SidebarSection',
                 'FooterSection',
             ],
             'view_name'     => 'GenericTemplate',

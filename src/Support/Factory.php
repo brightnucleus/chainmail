@@ -59,19 +59,19 @@ class Factory
     }
 
     /**
-     * Create and return a new instance of a section.
+     * Create and return a new instance of an element.
      *
      * @since 1.0.0
      *
-     * @param string      $type      Type of section to create.
+     * @param string      $type      Type of element to create.
      * @param string|null $arguments Optional. Arguments to pass to the object.
      * @return mixed
-     * @throws RuntimeException If an unknown section type is requested.
+     * @throws RuntimeException If an unknown element type is requested.
      */
     public function create($type, $arguments = null)
     {
 
-        $classMap = $this->config->getKey($this->element);
+        $classMap = $this->config[$this->element];
 
         if ( ! array_key_exists($type, $classMap)) {
             throw new RuntimeException(sprintf(
@@ -81,7 +81,7 @@ class Factory
             ));
         }
 
-        $className = $classMap[$type];
+        $className = $classMap[$type]['class_name'];
 
         return new $className($this->config, $arguments);
     }

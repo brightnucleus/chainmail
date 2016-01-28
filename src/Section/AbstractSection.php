@@ -28,13 +28,13 @@ abstract class AbstractSection implements SectionInterface
 {
 
     /**
-     * Name of the view to use for rendering.
+     * Name of the Section.
      *
      * @since 1.0.0
      *
      * @var string
      */
-    protected $viewName;
+    protected $sectionName;
 
     /**
      * Configuration Settings.
@@ -64,26 +64,49 @@ abstract class AbstractSection implements SectionInterface
      *                                      the constructor. Contained
      *                                      elements: string $section, string
      *                                      $content
+     * @throws RuntimeException
      */
     public function __construct($config, $arguments)
     {
         $this->config = $config;
         list($section, $content) = $arguments;
-        $this->setViewName($section);
+        $this->setSectionName($section);
         $this->content = $content;
     }
 
     /**
-     * Set the name of the View to use for rendering.
+     * Set the name of the Section.
      *
      * @since 1.0.0
      *
      * @param string $section Optional. Name of the section.
+     * @throws RuntimeException
      */
-    abstract protected function setViewName($section = null);
+    protected function setSectionName($section = null)
+    {
+        if ( ! $section) {
+            throw new RuntimeException('Initialised section without passing it a section name.');
+        }
+        if ( ! array_key_exists($section, $this->config['sections'])) {
+            throw new RuntimeException('Initialised section with an unknown section name.');
+        }
+        $this->sectionName = $section;
+    }
 
     /**
-     * Set the name of the View to use for rendering.
+     * Get the name of the Section.
+     *
+     * @since 1.0.0
+     *
+     * @return string Name of the section.
+     */
+    protected function getSectionName()
+    {
+        return $this->sectionName;
+    }
+
+    /**
+     * Get the name of the View to use for rendering.
      *
      * @since 1.0.0
      *
@@ -91,7 +114,7 @@ abstract class AbstractSection implements SectionInterface
      */
     protected function getViewName()
     {
-        return $this->viewName;
+        return $this->config['sections'][$this->getSectionName()]['view_name'];
     }
 
     /**
@@ -107,10 +130,12 @@ abstract class AbstractSection implements SectionInterface
     {
 
         $viewLocation = $this->getViewLocation($context);
-        $viewType     = $this->config->getKey('view_type');
+        $viewType     = $this->config['view_type'];
 
         $viewFactory = new Factory($this->config, 'view_types');
         $view        = $viewFactory->create($viewType, $viewLocation);
+
+        $context['css_class'] = $this->getCSSClass();
 
         return $view->render($context, $this->content);
     }
@@ -125,8 +150,33 @@ abstract class AbstractSection implements SectionInterface
      */
     protected function getViewLocation(array $context)
     {
-        $viewRoot = $this->config->getKey('views_root');
+        return $this->getViewRoot() . '/sections/' . $context['format'] . '/' . $this->getViewName();
+    }
 
-        return $viewRoot . '/sections/' . $context['format'] . '/' . $this->getViewName();
+    /**
+     * Get the root location of the view that is used for rendering.
+     *
+     * @since 1.0.0
+     *
+     * @return string
+     */
+    protected function getViewRoot()
+    {
+        $viewRoots   = $this->config['view_root_locations'];
+        $viewRootKey = $this->config['sections'][$this->getSectionName()]['view_location'];
+
+        return $viewRoots[$viewRootKey];
+    }
+
+    /**
+     * Get the CSS class that is used for the section.
+     *
+     * @since 1.0.0
+     *
+     * @return string
+     */
+    protected function getCSSClass()
+    {
+        return $this->config['sections'][$this->getSectionName()]['css_class'];
     }
 }
