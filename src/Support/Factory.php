@@ -33,7 +33,7 @@ class Factory {
 	protected $config;
 
 	/**
-	 * Instantiate a SectionFactory object.
+	 * Instantiate a Factory object.
 	 *
 	 * @since 1.0.0
 	 *
