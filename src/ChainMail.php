@@ -82,4 +82,21 @@ class ChainMail
 
         return $mail;
     }
+
+    /**
+     * Render a specific section.
+     *
+     * @since 1.0.0
+     *
+     * @param string $sectionType Type of section to render.
+     * @param array  $context     The context in which to render the section.
+     * @return string Rendered HTML.
+     */
+    public static function renderSection($sectionType, $context)
+    {
+        /** @var SectionInterface $section */
+        $section = $context['sections'][$sectionType];
+
+        return $section->render($context);
+    }
 }

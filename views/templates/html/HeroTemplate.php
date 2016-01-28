@@ -11,22 +11,13 @@
 
 namespace BrightNucleus\ChainMail;
 
-/** @var SectionInterface $header */
-$header = $context['sections']['HeaderSection'];
-/** @var SectionInterface $hero */
-$hero = $context['sections']['HeroSection'];
-/** @var SectionInterface $body */
-$body = $context['sections']['BodySection'];
-/** @var SectionInterface $footer */
-$footer = $context['sections']['FooterSection'];
-
 ?>
 <html>
 <head></head>
 <body>
-<?php echo $header->render($context); ?>
-<?php echo $hero->render($context); ?>
-<?php echo $body->render($context); ?>
-<?php echo $footer->render($context); ?>
+<?php echo ChainMail::renderSection('HeaderSection', $context); ?>
+<?php echo ChainMail::renderSection('HeroSection', $context); ?>
+<?php echo ChainMail::renderSection('BodySection', $context); ?>
+<?php echo ChainMail::renderSection('FooterSection', $context); ?>
 </body>
 </html>
