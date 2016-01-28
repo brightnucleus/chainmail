@@ -15,9 +15,10 @@ namespace BrightNucleus\ChainMail;
 <html>
 <head></head>
 <body>
-<?php echo ChainMail::renderSection('HeaderSection', $context); ?>
-<?php echo ChainMail::renderSection('HeroSection', $context); ?>
-<?php echo ChainMail::renderSection('BodySection', $context); ?>
-<?php echo ChainMail::renderSection('FooterSection', $context); ?>
+<?php
+foreach (ChainMail::getUsedSections($context) as $section) {
+    echo ChainMail::renderSection($section, $context);
+}
+?>
 </body>
 </html>
