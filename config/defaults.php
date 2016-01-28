@@ -118,7 +118,7 @@ return [
                 'BodySection',
                 'FooterSection',
             ],
-            'view_name'     => 'GenericTemplate.php',
+            'view_name'     => 'GenericTemplate',
             'view_location' => 'default',
         ],
         'HeroTemplate'        => [
@@ -129,7 +129,7 @@ return [
                 'BodySection',
                 'FooterSection',
             ],
-            'view_name'     => 'GenericTemplate.php',
+            'view_name'     => 'GenericTemplate',
             'view_location' => 'default',
         ],
         'SidebarTemplate'     => [
@@ -140,7 +140,7 @@ return [
                 'SidebarTemplate',
                 'FooterSection',
             ],
-            'view_name'     => 'GenericTemplate.php',
+            'view_name'     => 'GenericTemplate',
             'view_location' => 'default',
         ],
         'HeroSidebarTemplate' => [
@@ -152,7 +152,7 @@ return [
                 'SidebarTemplate',
                 'FooterSection',
             ],
-            'view_name'     => 'GenericTemplate.php',
+            'view_name'     => 'GenericTemplate',
             'view_location' => 'default',
         ],
     ],
