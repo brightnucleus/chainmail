@@ -19,7 +19,7 @@ return [
      * specific view to be rendered.
      */
     'view_root_locations' => [
-        'default' => __DIR__ . '/../views/',
+        'default' => __DIR__ . '/../views',
     ],
 
     /*
@@ -101,7 +101,9 @@ return [
      * The `ViewInterface` implementations that are provided.
      */
     'view_types'          => [
-        'PHPView' => '\BrightNucleus\ChainMail\View\PHPView',
+        'PHPView' => [
+            'class_name' => '\BrightNucleus\ChainMail\View\PHPView',
+        ],
     ],
 
     /*
@@ -113,7 +115,7 @@ return [
     'templates'           => [
         'BasicTemplate'       => [
             'class_name'    => '\BrightNucleus\ChainMail\Template\GenericTemplate',
-            'sections' => [
+            'sections'      => [
                 'HeaderSection',
                 'BodySection',
                 'FooterSection',
@@ -123,7 +125,7 @@ return [
         ],
         'HeroTemplate'        => [
             'class_name'    => '\BrightNucleus\ChainMail\Template\GenericTemplate',
-            'sections' => [
+            'sections'      => [
                 'HeaderSection',
                 'HeroTemplate',
                 'BodySection',
@@ -134,7 +136,7 @@ return [
         ],
         'SidebarTemplate'     => [
             'class_name'    => '\BrightNucleus\ChainMail\Template\GenericTemplate',
-            'sections' => [
+            'sections'      => [
                 'HeaderSection',
                 'BodySection',
                 'SidebarTemplate',
@@ -145,7 +147,7 @@ return [
         ],
         'HeroSidebarTemplate' => [
             'class_name'    => '\BrightNucleus\ChainMail\Template\GenericTemplate',
-            'sections' => [
+            'sections'      => [
                 'HeaderSection',
                 'HeroTemplate',
                 'BodySection',
@@ -164,26 +166,31 @@ return [
      */
     'sections'            => [
         'HeaderSection'  => [
+            'css_class'     => 'header',
             'class_name'    => '\BrightNucleus\ChainMail\Section\GenericSection',
             'view_name'     => 'GenericSection',
             'view_location' => 'default',
         ],
         'BodySection'    => [
+            'css_class'     => 'body',
             'class_name'    => '\BrightNucleus\ChainMail\Section\GenericSection',
             'view_name'     => 'GenericSection',
             'view_location' => 'default',
         ],
         'FooterSection'  => [
+            'css_class'     => 'footer',
             'class_name'    => '\BrightNucleus\ChainMail\Section\GenericSection',
             'view_name'     => 'GenericSection',
             'view_location' => 'default',
         ],
         'HeroSection'    => [
+            'css_class'     => 'hero',
             'class_name'    => '\BrightNucleus\ChainMail\Section\GenericSection',
             'view_name'     => 'GenericSection',
             'view_location' => 'default',
         ],
         'SidebarSection' => [
+            'css_class'     => 'sidebar',
             'class_name'    => '\BrightNucleus\ChainMail\Section\GenericSection',
             'view_name'     => 'GenericSection',
             'view_location' => 'default',
