@@ -11,4 +11,4 @@
 
 namespace BrightNucleus\ChainMail;
 
-?><?php echo $content; ?>
+echo $content;
