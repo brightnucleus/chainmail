@@ -27,10 +27,10 @@ class PHPView extends AbstractView
      *
      * @since 1.0.0
      *
-     * @param array  $context The context in which to render the Renderable.
-     * @param string $content Optional. The content that the view should
-     *                        represent.
-     * @return string|null Rendered output of the Renderable.
+     * @param array       $context The context in which to render the Renderable.
+     * @param string|null $content Optional. The content that the view should
+     *                             represent.
+     * @return string Rendered output of the Renderable.
      */
     public function render(array $context, $content = null)
     {
