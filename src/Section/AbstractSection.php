@@ -79,7 +79,7 @@ abstract class AbstractSection implements SectionInterface
      *
      * @since 1.0.0
      *
-     * @param string $section Optional. Name of the section.
+     * @param string|null $section Optional. Name of the section.
      * @throws RuntimeException
      */
     protected function setSectionName($section = null)
