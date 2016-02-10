@@ -48,7 +48,7 @@ class ChainMail
     public function __construct(ConfigInterface $config = null)
     {
 
-        $defaults = new Config(include(ChainMail::DEFAULT_CONFIG));
+        $defaults = new Config(include(self::DEFAULT_CONFIG));
 
         if ( ! $config) {
             $this->config = $defaults;
@@ -129,8 +129,8 @@ class ChainMail
     {
         $output = '';
 
-        foreach (ChainMail::getUsedSections($context) as $section) {
-            $output .= ChainMail::renderSection($section, $context);
+        foreach (self::getUsedSections($context) as $section) {
+            $output .= self::renderSection($section, $context);
         }
 
         return $output;
