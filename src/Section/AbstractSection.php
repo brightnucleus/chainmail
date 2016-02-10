@@ -84,7 +84,7 @@ abstract class AbstractSection implements SectionInterface
      */
     protected function setSectionName($section = null)
     {
-        if ( ! $section) {
+        if (null === $section) {
             throw new RuntimeException('Initialised section without passing it a section name.');
         }
         if ( ! array_key_exists($section, $this->config['sections'])) {
