@@ -85,7 +85,7 @@ abstract class AbstractTemplate implements TemplateInterface
      */
     protected function setTemplateName($template = null)
     {
-        if ( ! $template) {
+        if (null === $template) {
             throw new RuntimeException('Initialised template without passing it a template name.');
         }
         if ( ! array_key_exists($template, $this->config['templates'])) {
