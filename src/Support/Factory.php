@@ -63,8 +63,8 @@ class Factory
      *
      * @since 1.0.0
      *
-     * @param string      $type      Type of element to create.
-     * @param string|null $arguments Optional. Arguments to pass to the object.
+     * @param string $type      Type of element to create.
+     * @param mixed  $arguments Optional. Arguments to pass to the object.
      * @return mixed
      * @throws RuntimeException If an unknown element type is requested.
      */
