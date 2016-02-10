@@ -94,6 +94,8 @@ abstract class AbstractMail implements MailInterface
      * Set the format of the mail.
      *
      * @since 1.0.0
+     *
+     * @return void
      */
     abstract protected function setFormat();
 

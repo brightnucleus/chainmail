@@ -30,6 +30,7 @@ interface MailInterface extends Renderable
      * @since 1.0.0
      *
      * @param string|TemplateInterface $template Template to use.
+     * @return void
      */
     public function setTemplate($template);
 
@@ -49,6 +50,7 @@ interface MailInterface extends Renderable
      *
      * @param string $type    Type of section to add.
      * @param string $content Content of the section.
+     * @return void
      * @throws RuntimeException
      */
     public function addSection($type, $content);
