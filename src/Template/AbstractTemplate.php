@@ -80,7 +80,7 @@ abstract class AbstractTemplate implements TemplateInterface
      *
      * @since 1.0.0
      *
-     * @param string $template Optional. Name of the template.
+     * @param string|null $template Optional. Name of the template.
      * @throws RuntimeException
      */
     protected function setTemplateName($template = null)
