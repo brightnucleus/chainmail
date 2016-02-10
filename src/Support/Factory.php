@@ -34,6 +34,15 @@ class Factory
     protected $config;
 
     /**
+     * Type of element the factory wants to create.
+     *
+     * @since 1.0.0
+     *
+     * @var string
+     */
+    protected $element;
+
+    /**
      * Instantiate a Factory object.
      *
      * @since 1.0.0
