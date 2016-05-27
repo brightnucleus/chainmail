@@ -13,7 +13,7 @@ namespace BrightNucleus\ChainMail\Section;
 
 use RuntimeException;
 use BrightNucleus\ChainMail\SectionInterface;
-use BrightNucleus\ChainMail\Support\ConfigInterface;
+use BrightNucleus\Config\ConfigInterface;
 use BrightNucleus\ChainMail\Support\Factory;
 
 /**

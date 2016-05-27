@@ -11,7 +11,7 @@
 
 namespace BrightNucleus\ChainMail\View;
 
-use BrightNucleus\ChainMail\Support\ConfigInterface;
+use BrightNucleus\Config\ConfigInterface;
 use BrightNucleus\ChainMail\ViewInterface;
 
 /**

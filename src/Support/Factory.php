@@ -12,6 +12,7 @@
 namespace BrightNucleus\ChainMail\Support;
 
 use RuntimeException;
+use BrightNucleus\Config\ConfigInterface;
 
 /**
  * Class SectionFactory

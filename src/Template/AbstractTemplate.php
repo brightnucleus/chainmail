@@ -14,7 +14,7 @@ namespace BrightNucleus\ChainMail\Template;
 use RuntimeException;
 use BrightNucleus\ChainMail\Support\Factory;
 use BrightNucleus\ChainMail\TemplateInterface;
-use BrightNucleus\ChainMail\Support\ConfigInterface;
+use BrightNucleus\Config\ConfigInterface;
 
 /**
  * Abstract Class AbstractTemplate

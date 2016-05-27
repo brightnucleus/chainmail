@@ -11,10 +11,10 @@
 
 namespace BrightNucleus\ChainMail;
 
+use BrightNucleus\Config\ConfigInterface;
 use RuntimeException;
-use BrightNucleus\ChainMail\Support\Config;
 use BrightNucleus\ChainMail\Support\Factory;
-use BrightNucleus\ChainMail\Support\ConfigInterface;
+use BrightNucleus\Config\ConfigFactory;
 
 /**
  * Class ChainMail
@@ -48,7 +48,7 @@ class ChainMail
     public function __construct(ConfigInterface $config = null)
     {
 
-        $defaults = new Config(include(self::DEFAULT_CONFIG));
+        $defaults = ConfigFactory::create(include(self::DEFAULT_CONFIG));
 
         if ( ! $config) {
             $this->config = $defaults;
@@ -56,7 +56,7 @@ class ChainMail
             return;
         }
 
-        $this->config = new Config(array_merge(
+        $this->config = ConfigFactory::create(array_merge(
                 (array)$defaults,
                 (array)$config)
         );

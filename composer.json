@@ -14,6 +14,7 @@
 		}
 	},
 	"require": {
+		"brightnucleus/config": "^0.4.0"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~5.1"

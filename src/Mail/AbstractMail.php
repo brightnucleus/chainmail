@@ -14,7 +14,7 @@ namespace BrightNucleus\ChainMail\Mail;
 use RuntimeException;
 use BrightNucleus\ChainMail\Support\Factory;
 use BrightNucleus\ChainMail\MailInterface;
-use BrightNucleus\ChainMail\Support\ConfigInterface;
+use BrightNucleus\Config\ConfigInterface;
 use BrightNucleus\ChainMail\TemplateInterface;
 use BrightNucleus\ChainMail\SectionInterface;
 

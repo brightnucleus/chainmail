@@ -1,11 +1,203 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "db28e63b06ba506beb82f0b03395aa92",
-    "packages": [],
+    "hash": "99032ae9960f333d9afe3e0f6e59df84",
+    "content-hash": "870e3e2091096b3ae77a6988c10bf634",
+    "packages": [
+        {
+            "name": "beberlei/assert",
+            "version": "v2.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/beberlei/assert.git",
+                "reference": "91e2690c4ecc8a4e3e2d333430069f6a0c694a7a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/beberlei/assert/zipball/91e2690c4ecc8a4e3e2d333430069f6a0c694a7a",
+                "reference": "91e2690c4ecc8a4e3e2d333430069f6a0c694a7a",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "@stable"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Assert": "lib/"
+                },
+                "files": [
+                    "lib/Assert/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de"
+                }
+            ],
+            "description": "Thin assertion library for input validation in business models.",
+            "keywords": [
+                "assert",
+                "assertion",
+                "validation"
+            ],
+            "time": "2016-03-22 14:34:51"
+        },
+        {
+            "name": "brightnucleus/config",
+            "version": "v0.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/brightnucleus/config.git",
+                "reference": "0e95144302ee9d2c8fc23bb32f95f231dd4bc0ea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/brightnucleus/config/zipball/0e95144302ee9d2c8fc23bb32f95f231dd4bc0ea",
+                "reference": "0e95144302ee9d2c8fc23bb32f95f231dd4bc0ea",
+                "shasum": ""
+            },
+            "require": {
+                "beberlei/assert": ">=2.5",
+                "brightnucleus/exceptions": ">=0.2",
+                "symfony/options-resolver": ">=2.8"
+            },
+            "require-dev": {
+                "php-composter/php-composter-phpcs-psr2": "^0.2.0",
+                "phpunit/phpunit": "~4",
+                "squizlabs/php_codesniffer": "~2.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BrightNucleus\\Config\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Alain Schlesser",
+                    "email": "alain.schlesser@gmail.com"
+                }
+            ],
+            "description": "Minimal, reusable Config component.",
+            "time": "2016-04-28 03:57:24"
+        },
+        {
+            "name": "brightnucleus/exceptions",
+            "version": "v0.2.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/brightnucleus/exceptions.git",
+                "reference": "3b845348bb934599e39bfa8f838185b219ddd5a9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/brightnucleus/exceptions/zipball/3b845348bb934599e39bfa8f838185b219ddd5a9",
+                "reference": "3b845348bb934599e39bfa8f838185b219ddd5a9",
+                "shasum": ""
+            },
+            "require": {
+                "beberlei/assert": ">=2.5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4",
+                "squizlabs/php_codesniffer": "~2.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BrightNucleus\\Exception\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Alain Schlesser",
+                    "email": "alain.schlesser@gmail.com"
+                }
+            ],
+            "description": "Exceptions shared across Bright Nucleus components.",
+            "time": "2016-04-05 07:46:33"
+        },
+        {
+            "name": "symfony/options-resolver",
+            "version": "v3.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/options-resolver.git",
+                "reference": "77f7252e377e1dc021ba74defe12a19a45bb1212"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/77f7252e377e1dc021ba74defe12a19a45bb1212",
+                "reference": "77f7252e377e1dc021ba74defe12a19a45bb1212",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\OptionsResolver\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony OptionsResolver Component",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "config",
+                "configuration",
+                "options"
+            ],
+            "time": "2016-05-09 18:14:44"
+        }
+    ],
     "packages-dev": [
         {
             "name": "doctrine/instantiator",
