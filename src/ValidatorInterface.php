@@ -1,8 +1,8 @@
 <?php
 /**
- * ValidatorInterface
+ * BrightNucleus Chainmail Component.
  *
- * @package   brightnucleus/chainmail
+ * @package   BrightNucleus/Chainmail
  * @author    Alain Schlesser <alain.schlesser@gmail.com>
  * @license   MIT
  * @link      http://www.brightnucleus.com/
@@ -12,7 +12,7 @@
 namespace BrightNucleus\ChainMail;
 
 /**
- * Interface ValidatorInterface
+ * Interface ValidatorInterface.
  *
  * @since   1.0.0
  *
@@ -29,6 +29,7 @@ interface ValidatorInterface
      *
      * @param string $content Content to validate.
      * @param array  $context Context in which to validate.
+     *
      * @return string Validated content.
      */
     public function validate($content, array $context);

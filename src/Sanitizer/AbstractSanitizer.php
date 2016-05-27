@@ -1,8 +1,8 @@
 <?php
 /**
- * AbstractSanitizer
+ * BrightNucleus Chainmail Component.
  *
- * @package   brightnucleus/chainmail
+ * @package   BrightNucleus/Chainmail
  * @author    Alain Schlesser <alain.schlesser@gmail.com>
  * @license   MIT
  * @link      http://www.brightnucleus.com/
@@ -14,7 +14,7 @@ namespace BrightNucleus\ChainMail\Sanitizer;
 use BrightNucleus\ChainMail\SanitizerInterface;
 
 /**
- * Abstract Class AbstractSanitizer
+ * Abstract Class AbstractSanitizer.
  *
  * @since   1.0.0
  *

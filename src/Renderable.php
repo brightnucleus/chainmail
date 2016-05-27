@@ -1,8 +1,8 @@
 <?php
 /**
- * Renderable
+ * BrightNucleus Chainmail Component.
  *
- * @package   brightnucleus/chainmail
+ * @package   BrightNucleus/Chainmail
  * @author    Alain Schlesser <alain.schlesser@gmail.com>
  * @license   MIT
  * @link      http://www.brightnucleus.com/
@@ -12,7 +12,7 @@
 namespace BrightNucleus\ChainMail;
 
 /**
- * Interface Renderable
+ * Interface Renderable.
  *
  * @since   1.0.0
  *
@@ -28,6 +28,7 @@ interface Renderable
      * @since 1.0.0
      *
      * @param array $context The context in which to render the Renderable.
+     *
      * @return string Rendered output of the Renderable.
      */
     public function render(array $context);

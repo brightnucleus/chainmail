@@ -1,8 +1,8 @@
 <?php
 /**
- * TextMail
+ * BrightNucleus Chainmail Component.
  *
- * @package   brightnucleus/chainmail
+ * @package   BrightNucleus/Chainmail
  * @author    Alain Schlesser <alain.schlesser@gmail.com>
  * @license   MIT
  * @link      http://www.brightnucleus.com/
@@ -12,7 +12,7 @@
 namespace BrightNucleus\ChainMail\Mail;
 
 /**
- * Class TextMail
+ * Class TextMail.
  *
  * @since   1.0.0
  *
@@ -38,6 +38,7 @@ class TextMail extends AbstractMail
      * @since 1.0.0
      *
      * @param array $context Context to set/modify.
+     *
      * @return array Updated context.
      */
     protected function setContext(array $context)

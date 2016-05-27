@@ -1,8 +1,8 @@
 <?php
 /**
- * MailInterface
+ * BrightNucleus Chainmail Component.
  *
- * @package   brightnucleus/chainmail
+ * @package   BrightNucleus/Chainmail
  * @author    Alain Schlesser <alain.schlesser@gmail.com>
  * @license   MIT
  * @link      http://www.brightnucleus.com/
@@ -14,7 +14,7 @@ namespace BrightNucleus\ChainMail;
 use RuntimeException;
 
 /**
- * Interface MailInterface
+ * Interface MailInterface.
  *
  * @since   1.0.0
  *
@@ -30,6 +30,7 @@ interface MailInterface extends Renderable
      * @since 1.0.0
      *
      * @param string|TemplateInterface $template Template to use.
+     *
      * @return void
      */
     public function setTemplate($template);
@@ -50,6 +51,7 @@ interface MailInterface extends Renderable
      *
      * @param string $type    Type of section to add.
      * @param string $content Content of the section.
+     *
      * @return void
      * @throws RuntimeException
      */

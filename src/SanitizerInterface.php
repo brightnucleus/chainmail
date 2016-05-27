@@ -1,8 +1,8 @@
 <?php
 /**
- * SanitizerInterface
+ * BrightNucleus Chainmail Component.
  *
- * @package   brightnucleus/chainmail
+ * @package   BrightNucleus/Chainmail
  * @author    Alain Schlesser <alain.schlesser@gmail.com>
  * @license   MIT
  * @link      http://www.brightnucleus.com/
@@ -12,7 +12,7 @@
 namespace BrightNucleus\ChainMail;
 
 /**
- * Interface SanitizerInterface
+ * Interface SanitizerInterface.
  *
  * @since   1.0.0
  *
@@ -29,6 +29,7 @@ interface SanitizerInterface
      *
      * @param string $content Content to sanitize.
      * @param array  $context Context in which to sanitize.
+     *
      * @return string Sanitized content.
      */
     public function sanitize($content, array $context);

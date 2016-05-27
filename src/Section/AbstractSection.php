@@ -1,8 +1,8 @@
 <?php
 /**
- * AbstractSection
+ * BrightNucleus Chainmail Component.
  *
- * @package   brightnucleus/chainmail
+ * @package   BrightNucleus/Chainmail
  * @author    Alain Schlesser <alain.schlesser@gmail.com>
  * @license   MIT
  * @link      http://www.brightnucleus.com/
@@ -18,7 +18,7 @@ use BrightNucleus\Config\ConfigInterface;
 use RuntimeException;
 
 /**
- * Abstract Class AbstractSection
+ * Abstract Class AbstractSection.
  *
  * @since   1.0.0
  *

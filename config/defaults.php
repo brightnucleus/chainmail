@@ -1,17 +1,20 @@
 <?php
 /**
- * ChainMail default configuration settings.
+ * BrightNucleus Chainmail Component.
  *
- * These defaults can be overridden by providing an instance of a
- * `ConfigInterface` to the `ChainMail` constructor.
- *
- * @package   brightnucleus/chainmail
+ * @package   BrightNucleus/Chainmail
  * @author    Alain Schlesser <alain.schlesser@gmail.com>
  * @license   MIT
  * @link      http://www.brightnucleus.com/
  * @copyright 2016 Alain Schlesser, Bright Nucleus
  */
 
+/*
+ * ChainMail default configuration settings.
+ *
+ * These defaults can be overridden by providing an instance of a
+ * `ConfigInterface` to the `ChainMail` constructor.
+ */
 return [
     /*
      * Root location that contains the view files to be rendered. These are

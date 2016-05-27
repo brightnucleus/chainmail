@@ -1,8 +1,8 @@
 <?php
 /**
- * Factory
+ * BrightNucleus Chainmail Component.
  *
- * @package   brightnucleus/chainmail
+ * @package   BrightNucleus/Chainmail
  * @author    Alain Schlesser <alain.schlesser@gmail.com>
  * @license   MIT
  * @link      http://www.brightnucleus.com/
@@ -16,7 +16,7 @@ use BrightNucleus\Chainmail\Exception\FailedToInstantiateFactoryException;
 use BrightNucleus\Config\ConfigInterface;
 
 /**
- * Class SectionFactory
+ * Class Factory.
  *
  * @since   1.0.0
  *

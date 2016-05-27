@@ -1,8 +1,8 @@
 <?php
 /**
- * PHPView
+ * BrightNucleus Chainmail Component.
  *
- * @package   brightnucleus/chainmail
+ * @package   BrightNucleus/Chainmail
  * @author    Alain Schlesser <alain.schlesser@gmail.com>
  * @license   MIT
  * @link      http://www.brightnucleus.com/
@@ -12,7 +12,7 @@
 namespace BrightNucleus\ChainMail\View;
 
 /**
- * Class View
+ * Class PHPView.
  *
  * @since   1.0.0
  *
@@ -30,6 +30,7 @@ class PHPView extends AbstractView
      * @param array       $context The context in which to render the Renderable.
      * @param string|null $content Optional. The content that the view should
      *                             represent.
+     *
      * @return string Rendered output of the Renderable.
      */
     public function render(array $context, $content = null)

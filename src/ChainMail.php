@@ -1,8 +1,8 @@
 <?php
 /**
- * ChainMail
+ * BrightNucleus Chainmail Component.
  *
- * @package   brightnucleus/chainmail
+ * @package   BrightNucleus/Chainmail
  * @author    Alain Schlesser <alain.schlesser@gmail.com>
  * @license   MIT
  * @link      http://www.brightnucleus.com/
@@ -16,7 +16,7 @@ use BrightNucleus\Config\ConfigFactory;
 use BrightNucleus\Config\ConfigInterface;
 
 /**
- * Class ChainMail
+ * Class ChainMail.
  *
  * @since   1.0.0
  *

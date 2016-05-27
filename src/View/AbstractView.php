@@ -1,8 +1,8 @@
 <?php
 /**
- * AbstractView
+ * BrightNucleus Chainmail Component.
  *
- * @package   brightnucleus/chainmail
+ * @package   BrightNucleus/Chainmail
  * @author    Alain Schlesser <alain.schlesser@gmail.com>
  * @license   MIT
  * @link      http://www.brightnucleus.com/
@@ -11,11 +11,11 @@
 
 namespace BrightNucleus\ChainMail\View;
 
-use BrightNucleus\Config\ConfigInterface;
 use BrightNucleus\ChainMail\ViewInterface;
+use BrightNucleus\Config\ConfigInterface;
 
 /**
- * Class View
+ * Abstract Class AbstractView.
  *
  * @since   1.0.0
  *

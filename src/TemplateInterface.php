@@ -1,8 +1,8 @@
 <?php
 /**
- * TemplateInterface
+ * BrightNucleus Chainmail Component.
  *
- * @package   brightnucleus/chainmail
+ * @package   BrightNucleus/Chainmail
  * @author    Alain Schlesser <alain.schlesser@gmail.com>
  * @license   MIT
  * @link      http://www.brightnucleus.com/
@@ -12,7 +12,7 @@
 namespace BrightNucleus\ChainMail;
 
 /**
- * Interface TemplateInterface
+ * Interface TemplateInterface.
  *
  * @since   1.0.0
  *

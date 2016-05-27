@@ -1,8 +1,8 @@
 <?php
 /**
- * ViewInterface
+ * BrightNucleus Chainmail Component.
  *
- * @package   brightnucleus/chainmail
+ * @package   BrightNucleus/Chainmail
  * @author    Alain Schlesser <alain.schlesser@gmail.com>
  * @license   MIT
  * @link      http://www.brightnucleus.com/
@@ -11,10 +11,8 @@
 
 namespace BrightNucleus\ChainMail;
 
-use BrightNucleus\ChainMail\Renderable;
-
 /**
- * Interface ViewInterface
+ * Interface ViewInterface.
  *
  * @since   1.0.0
  *

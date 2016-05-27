@@ -1,8 +1,8 @@
 <?php
 /**
- * AbstractValidator
+ * BrightNucleus Chainmail Component.
  *
- * @package   brightnucleus/chainmail
+ * @package   BrightNucleus/Chainmail
  * @author    Alain Schlesser <alain.schlesser@gmail.com>
  * @license   MIT
  * @link      http://www.brightnucleus.com/
@@ -14,7 +14,7 @@ namespace BrightNucleus\ChainMail\Validator;
 use BrightNucleus\ChainMail\ValidatorInterface;
 
 /**
- * Abstract Class AbstractValidator
+ * Abstract Class AbstractValidator.
  *
  * @since   1.0.0
  *

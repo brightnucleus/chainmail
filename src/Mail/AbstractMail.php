@@ -1,8 +1,8 @@
 <?php
 /**
- * AbstractMail
+ * BrightNucleus Chainmail Component.
  *
- * @package   brightnucleus/chainmail
+ * @package   BrightNucleus/Chainmail
  * @author    Alain Schlesser <alain.schlesser@gmail.com>
  * @license   MIT
  * @link      http://www.brightnucleus.com/
@@ -11,15 +11,14 @@
 
 namespace BrightNucleus\ChainMail\Mail;
 
-use RuntimeException;
-use BrightNucleus\ChainMail\Support\Factory;
 use BrightNucleus\ChainMail\MailInterface;
-use BrightNucleus\Config\ConfigInterface;
+use BrightNucleus\ChainMail\Support\Factory;
 use BrightNucleus\ChainMail\TemplateInterface;
-use BrightNucleus\ChainMail\SectionInterface;
+use BrightNucleus\Config\ConfigInterface;
+use RuntimeException;
 
 /**
- * Abstract Class AbstractMail
+ * Abstract Class AbstractMail.
  *
  * @since   1.0.0
  *
@@ -79,44 +78,6 @@ abstract class AbstractMail implements MailInterface
     }
 
     /**
-     * Set the format of the mail.
-     *
-     * @since 1.0.0
-     *
-     * @return string Format of the Mail.
-     */
-    protected function getFormat()
-    {
-        return $this->format;
-    }
-
-    /**
-     * Set the format of the mail.
-     *
-     * @since 1.0.0
-     *
-     * @return void
-     */
-    abstract protected function setFormat();
-
-    /**
-     * Set the template to use for the renderer.
-     *
-     * @since 1.0.0
-     *
-     * @param string|TemplateInterface $template Template to use for the
-     *                                           renderer.
-     * @throws RuntimeException
-     */
-    public function setTemplate($template)
-    {
-        if (is_string($template)) {
-            $template = $this->createTemplate($template);
-        }
-        $this->template = $template;
-    }
-
-    /**
      * Get the template to use for the renderer.
      *
      * @since 1.0.0
@@ -127,7 +88,7 @@ abstract class AbstractMail implements MailInterface
     public function getTemplate()
     {
 
-        if ( ! $this->template) {
+        if (! $this->template) {
             $this->setDefaultTemplate();
         }
 
@@ -139,32 +100,21 @@ abstract class AbstractMail implements MailInterface
     }
 
     /**
-     * Set the template to the default template defined in the configuration.
+     * Set the template to use for the renderer.
      *
      * @since 1.0.0
      *
+     * @param string|TemplateInterface $template Template to use for the
+     *                                           renderer.
+     *
      * @throws RuntimeException
      */
-    protected function setDefaultTemplate()
+    public function setTemplate($template)
     {
-        $defaultTemplate = $this->config->getKey('default_template');
-        $this->setTemplate($defaultTemplate);
-    }
-
-    /**
-     * Create an instance of a template.
-     *
-     * @since 1.0.0
-     *
-     * @param string $template Template to instantiate.
-     * @return TemplateInterface $template Newly created instance.
-     * @throws RuntimeException
-     */
-    protected function createTemplate($template)
-    {
-        $templateFactory = new Factory($this->config, 'templates');
-
-        return $templateFactory->create($template, [$template]);
+        if (is_string($template)) {
+            $template = $this->createTemplate($template);
+        }
+        $this->template = $template;
     }
 
     /**
@@ -174,6 +124,7 @@ abstract class AbstractMail implements MailInterface
      *
      * @param string $type    Type of section to add.
      * @param string $content Content of the section.
+     *
      * @throws RuntimeException
      */
     public function addSection($type, $content)
@@ -187,6 +138,7 @@ abstract class AbstractMail implements MailInterface
      * @since 1.0.0
      *
      * @param array $context The context in which to render the email.
+     *
      * @return string Rendered output of the email
      * @throws RuntimeException
      */
@@ -217,11 +169,63 @@ abstract class AbstractMail implements MailInterface
     }
 
     /**
+     * Set the format of the mail.
+     *
+     * @since 1.0.0
+     *
+     * @return string Format of the Mail.
+     */
+    protected function getFormat()
+    {
+        return $this->format;
+    }
+
+    /**
+     * Set the format of the mail.
+     *
+     * @since 1.0.0
+     *
+     * @return void
+     */
+    abstract protected function setFormat();
+
+    /**
+     * Set the template to the default template defined in the configuration.
+     *
+     * @since 1.0.0
+     *
+     * @throws RuntimeException
+     */
+    protected function setDefaultTemplate()
+    {
+        $defaultTemplate = $this->config->getKey('default_template');
+        $this->setTemplate($defaultTemplate);
+    }
+
+    /**
+     * Create an instance of a template.
+     *
+     * @since 1.0.0
+     *
+     * @param string $template Template to instantiate.
+     *
+     * @return TemplateInterface $template Newly created instance.
+     * @throws RuntimeException
+     */
+    protected function createTemplate($template)
+    {
+        $templateFactory = new Factory($this->config, 'templates');
+
+        return $templateFactory->create($template, [$template]);
+    }
+
+    /**
      * Set the context of the mail.
      *
      * @since 1.0.0
      *
      * @param array $context Context to set/modify.
+     *
      * @return array Updated context.
      */
     abstract protected function setContext(array $context);

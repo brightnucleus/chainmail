@@ -1,8 +1,8 @@
 <?php
 /**
- * AbstractTemplate
+ * BrightNucleus Chainmail Component.
  *
- * @package   brightnucleus/chainmail
+ * @package   BrightNucleus/Chainmail
  * @author    Alain Schlesser <alain.schlesser@gmail.com>
  * @license   MIT
  * @link      http://www.brightnucleus.com/
@@ -12,14 +12,13 @@
 namespace BrightNucleus\ChainMail\Template;
 
 use BrightNucleus\Chainmail\Exception\FailedToInitialiseTemplateException;
-use BrightNucleus\Chainmail\Exception\FailedToInstantiateFactoryException;
-use RuntimeException;
 use BrightNucleus\ChainMail\Support\Factory;
 use BrightNucleus\ChainMail\TemplateInterface;
 use BrightNucleus\Config\ConfigInterface;
+use RuntimeException;
 
 /**
- * Abstract Class AbstractTemplate
+ * Abstract Class AbstractTemplate.
  *
  * @since   1.0.0
  *
@@ -56,6 +55,7 @@ abstract class AbstractTemplate implements TemplateInterface
      * @param array           $arguments    Arguments that are passed through
      *                                      the constructor. Contained
      *                                      elements: string $template
+     *
      * @throws RuntimeException
      */
     public function __construct($config, $arguments)
@@ -83,6 +83,7 @@ abstract class AbstractTemplate implements TemplateInterface
      * @since 1.0.0
      *
      * @param string|null $template Optional. Name of the template.
+     *
      * @throws FailedToInitialiseTemplateException If no template name was passed.
      * @throws FailedToInitialiseTemplateException If an unknown template name was passed.
      */
@@ -91,22 +92,10 @@ abstract class AbstractTemplate implements TemplateInterface
         if (null === $template) {
             throw new FailedToInitialiseTemplateException('Initialised template without passing it a template name.');
         }
-        if ( ! array_key_exists($template, $this->config['templates'])) {
+        if (! array_key_exists($template, $this->config['templates'])) {
             throw new FailedToInitialiseTemplateException('Initialised template with an unknown template name.');
         }
         $this->templateName = $template;
-    }
-
-    /**
-     * Get the name of the View to use for rendering.
-     *
-     * @since 1.0.0
-     *
-     * @return string Name of the view.
-     */
-    protected function getViewName()
-    {
-        return $this->config['templates'][$this->getTemplateName()]['view_name'];
     }
 
     /**
@@ -127,6 +116,7 @@ abstract class AbstractTemplate implements TemplateInterface
      * @since 1.0.0
      *
      * @param array $context The context in which to render the template.
+     *
      * @return string The rendered content.
      */
     public function render(array $context)
@@ -148,11 +138,24 @@ abstract class AbstractTemplate implements TemplateInterface
     }
 
     /**
+     * Get the name of the View to use for rendering.
+     *
+     * @since 1.0.0
+     *
+     * @return string Name of the view.
+     */
+    protected function getViewName()
+    {
+        return $this->config['templates'][$this->getTemplateName()]['view_name'];
+    }
+
+    /**
      * Get the location of the view that is used for rendering.
      *
      * @since 1.0.0
      *
      * @param array $context Context for which to get the view location.
+     *
      * @return string
      */
     protected function getViewLocation(array $context)
