@@ -11,10 +11,9 @@
 
 namespace BrightNucleus\ChainMail;
 
-use BrightNucleus\Config\ConfigInterface;
-use RuntimeException;
 use BrightNucleus\ChainMail\Support\Factory;
 use BrightNucleus\Config\ConfigFactory;
+use BrightNucleus\Config\ConfigInterface;
 
 /**
  * Class ChainMail
@@ -50,7 +49,7 @@ class ChainMail
 
         $defaults = ConfigFactory::create(include(self::DEFAULT_CONFIG));
 
-        if ( ! $config) {
+        if (! $config) {
             $this->config = $defaults;
 
             return;
@@ -63,33 +62,13 @@ class ChainMail
     }
 
     /**
-     * Create a new mail object.
-     *
-     * @since 1.0.0
-     *
-     * @param string|null                   $format   Optional. Format to use.
-     * @param string|TemplateInterface|null $template Optional. Template to be
-     *                                                used.
-     * @return MailInterface
-     * @throws RuntimeException
-     */
-    public function createMail($format = null, $template = null)
-    {
-        $mail_factory = new Factory($this->config, 'mails');
-        $mail_class   = $this->config->getKey('formats')[$format]['mail'];
-        $mail         = $mail_factory->create($mail_class);
-        $mail->setTemplate($template);
-
-        return $mail;
-    }
-
-    /**
      * Render a specific section.
      *
      * @since 1.0.0
      *
      * @param string $sectionType Type of section to render.
      * @param array  $context     The context in which to render the section.
+     *
      * @return string Rendered HTML.
      */
     public static function renderSection($sectionType, $context)
@@ -107,6 +86,7 @@ class ChainMail
      * @since 1.0.0
      *
      * @param array $context The context in which to render the section.
+     *
      * @return array Array of strings with section types.
      */
     public static function getUsedSections($context)
@@ -123,6 +103,7 @@ class ChainMail
      * @since 1.0.0
      *
      * @param array $context The context in which to render the section.
+     *
      * @return string Rendered HTML.
      */
     public static function renderSections($context)
@@ -134,5 +115,26 @@ class ChainMail
         }
 
         return $output;
+    }
+
+    /**
+     * Create a new mail object.
+     *
+     * @since 1.0.0
+     *
+     * @param string|null                   $format   Optional. Format to use.
+     * @param string|TemplateInterface|null $template Optional. Template to be
+     *                                                used.
+     *
+     * @return MailInterface
+     */
+    public function createMail($format = null, $template = null)
+    {
+        $mail_factory = new Factory($this->config, 'mails');
+        $mail_class   = $this->config->getKey('formats')[$format]['mail'];
+        $mail         = $mail_factory->create($mail_class);
+        $mail->setTemplate($template);
+
+        return $mail;
     }
 }

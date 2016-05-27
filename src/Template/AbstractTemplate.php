@@ -11,6 +11,8 @@
 
 namespace BrightNucleus\ChainMail\Template;
 
+use BrightNucleus\Chainmail\Exception\FailedToInitialiseTemplateException;
+use BrightNucleus\Chainmail\Exception\FailedToInstantiateFactoryException;
 use RuntimeException;
 use BrightNucleus\ChainMail\Support\Factory;
 use BrightNucleus\ChainMail\TemplateInterface;
@@ -81,15 +83,16 @@ abstract class AbstractTemplate implements TemplateInterface
      * @since 1.0.0
      *
      * @param string|null $template Optional. Name of the template.
-     * @throws RuntimeException
+     * @throws FailedToInitialiseTemplateException If no template name was passed.
+     * @throws FailedToInitialiseTemplateException If an unknown template name was passed.
      */
     protected function setTemplateName($template = null)
     {
         if (null === $template) {
-            throw new RuntimeException('Initialised template without passing it a template name.');
+            throw new FailedToInitialiseTemplateException('Initialised template without passing it a template name.');
         }
         if ( ! array_key_exists($template, $this->config['templates'])) {
-            throw new RuntimeException('Initialised template with an unknown template name.');
+            throw new FailedToInitialiseTemplateException('Initialised template with an unknown template name.');
         }
         $this->templateName = $template;
     }
@@ -125,7 +128,6 @@ abstract class AbstractTemplate implements TemplateInterface
      *
      * @param array $context The context in which to render the template.
      * @return string The rendered content.
-     * @throws RuntimeException
      */
     public function render(array $context)
     {

@@ -11,10 +11,11 @@
 
 namespace BrightNucleus\ChainMail\Section;
 
-use RuntimeException;
+use BrightNucleus\Chainmail\Exception\FailedToInitialiseSectionException;
 use BrightNucleus\ChainMail\SectionInterface;
-use BrightNucleus\Config\ConfigInterface;
 use BrightNucleus\ChainMail\Support\Factory;
+use BrightNucleus\Config\ConfigInterface;
+use RuntimeException;
 
 /**
  * Abstract Class AbstractSection
@@ -64,6 +65,7 @@ abstract class AbstractSection implements SectionInterface
      *                                      the constructor. Contained
      *                                      elements: string $section, string
      *                                      $content
+     *
      * @throws RuntimeException
      */
     public function __construct($config, $arguments)
@@ -72,25 +74,6 @@ abstract class AbstractSection implements SectionInterface
         list($section, $content) = $arguments;
         $this->setSectionName($section);
         $this->content = $content;
-    }
-
-    /**
-     * Set the name of the Section.
-     *
-     * @since 1.0.0
-     *
-     * @param string|null $section Optional. Name of the section.
-     * @throws RuntimeException
-     */
-    protected function setSectionName($section = null)
-    {
-        if (null === $section) {
-            throw new RuntimeException('Initialised section without passing it a section name.');
-        }
-        if ( ! array_key_exists($section, $this->config['sections'])) {
-            throw new RuntimeException('Initialised section with an unknown section name.');
-        }
-        $this->sectionName = $section;
     }
 
     /**
@@ -106,15 +89,24 @@ abstract class AbstractSection implements SectionInterface
     }
 
     /**
-     * Get the name of the View to use for rendering.
+     * Set the name of the Section.
      *
      * @since 1.0.0
      *
-     * @return string Name of the view.
+     * @param string|null $section Optional. Name of the section.
+     *
+     * @throws FailedToInitialiseSectionException If no section name was passed.
+     * @throws FailedToInitialiseSectionException If an unknown section name was passed.
      */
-    protected function getViewName()
+    protected function setSectionName($section = null)
     {
-        return $this->config['sections'][$this->getSectionName()]['view_name'];
+        if (null === $section) {
+            throw new FailedToInitialiseSectionException('Initialised section without passing it a section name.');
+        }
+        if (! array_key_exists($section, $this->config['sections'])) {
+            throw new FailedToInitialiseSectionException('Initialised section with an unknown section name.');
+        }
+        $this->sectionName = $section;
     }
 
     /**
@@ -123,6 +115,7 @@ abstract class AbstractSection implements SectionInterface
      * @since 1.0.0
      *
      * @param array $context The context in which to render the Renderable.
+     *
      * @return string Rendered output of the Renderable.
      * @throws RuntimeException
      */
@@ -141,11 +134,24 @@ abstract class AbstractSection implements SectionInterface
     }
 
     /**
+     * Get the name of the View to use for rendering.
+     *
+     * @since 1.0.0
+     *
+     * @return string Name of the view.
+     */
+    protected function getViewName()
+    {
+        return $this->config['sections'][$this->getSectionName()]['view_name'];
+    }
+
+    /**
      * Get the location of the view that is used for rendering.
      *
      * @since 1.0.0
      *
      * @param array $context Context for which to get the view location.
+     *
      * @return string
      */
     protected function getViewLocation(array $context)

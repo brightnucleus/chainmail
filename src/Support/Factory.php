@@ -11,7 +11,8 @@
 
 namespace BrightNucleus\ChainMail\Support;
 
-use RuntimeException;
+use BrightNucleus\Chainmail\Exception\FailedToInstantiateClassException;
+use BrightNucleus\Chainmail\Exception\FailedToInstantiateFactoryException;
 use BrightNucleus\Config\ConfigInterface;
 
 /**
@@ -49,17 +50,17 @@ class Factory
      * @since 1.0.0
      *
      * @param ConfigInterface $config  Configuration settings.
-     * @param string          $element The type of element to instantiate a
-     *                                 factory for.
-     * @throws RuntimeException When an unknown element type is requested.
+     * @param string          $element The type of element to instantiate a factory for.
+     *
+     * @throws FailedToInstantiateFactoryException When an unknown element type is requested.
      */
     public function __construct(ConfigInterface $config, $element)
     {
 
         $this->config = $config;
 
-        if ( ! $this->config->hasKey($element)) {
-            throw new RuntimeException(sprintf(
+        if (! $this->config->hasKey($element)) {
+            throw new FailedToInstantiateFactoryException(sprintf(
                 'Could not instantiate Factory for unknown Element Type "%1$s".',
                 $element
             ));
@@ -75,16 +76,17 @@ class Factory
      *
      * @param string $type      Type of element to create.
      * @param mixed  $arguments Optional. Arguments to pass to the object.
-     * @return mixed
-     * @throws RuntimeException If an unknown element type is requested.
+     *
+     * @return object New instance of the requested class.
+     * @throws FailedToInstantiateClassException If an unknown element type is requested.
      */
     public function create($type, $arguments = null)
     {
 
         $classMap = $this->config[$this->element];
 
-        if ( ! array_key_exists($type, $classMap)) {
-            throw new RuntimeException(sprintf(
+        if (! array_key_exists($type, $classMap)) {
+            throw new FailedToInstantiateClassException(sprintf(
                 'Could not create object, unknown Type "%1$s" for "%2$s" elements.',
                 $type,
                 $this->element
