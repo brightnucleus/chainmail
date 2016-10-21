@@ -14,8 +14,9 @@
 		}
 	},
 	"require": {
-		"brightnucleus/config": "^0.4.0",
-		"brightnucleus/exceptions": "^0.2.4"
+		"brightnucleus/config": "^0.4.5",
+		"brightnucleus/exceptions": "^0.2.4",
+		"brightnucleus/view": ">=0.2"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~5.1"

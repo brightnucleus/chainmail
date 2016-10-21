@@ -15,6 +15,7 @@ use BrightNucleus\Chainmail\Exception\FailedToInitialiseTemplateException;
 use BrightNucleus\ChainMail\Support\Factory;
 use BrightNucleus\ChainMail\TemplateInterface;
 use BrightNucleus\Config\ConfigInterface;
+use BrightNucleus\View\ViewBuilder;
 use RuntimeException;
 
 /**
@@ -47,21 +48,29 @@ abstract class AbstractTemplate implements TemplateInterface
     protected $templateName;
 
     /**
+     * ViewBuilder to create template and section views.
+     *
+     * @since 1.0.0
+     *
+     * @var ViewBuilder
+     */
+    protected $viewBuilder;
+
+    /**
      * Instantiate a AbstractTemplate object.
      *
      * @since 1.0.0
      *
-     * @param ConfigInterface $config       Configuration settings.
-     * @param array           $arguments    Arguments that are passed through
-     *                                      the constructor. Contained
-     *                                      elements: string $template
+     * @param ConfigInterface $config    Configuration settings.
+     * @param array           $arguments Arguments that are passed through the constructor.
+     *                                   Contained elements: string $template
      *
      * @throws RuntimeException
      */
-    public function __construct($config, $arguments)
+    public function __construct($config, array $arguments)
     {
         $this->config = $config;
-        list($template) = $arguments;
+        list($template, $this->viewBuilder) = $arguments;
         $this->setTemplateName($template);
     }
 
@@ -122,11 +131,8 @@ abstract class AbstractTemplate implements TemplateInterface
     public function render(array $context)
     {
 
-        $viewLocation = $this->getViewLocation($context);
-        $viewType     = $this->config['view_type'];
-
-        $viewFactory = new Factory($this->config, 'view_types');
-        $view        = $viewFactory->create($viewType, $viewLocation);
+        $viewName = $this->getViewName($context);
+        $view     = $this->viewBuilder->create($viewName);
 
         $sanitizerType    = $this->config['formats'][$context['format']]['sanitizer'];
         $sanitizerFactory = new Factory($this->config, 'sanitizers');
@@ -142,39 +148,13 @@ abstract class AbstractTemplate implements TemplateInterface
      *
      * @since 1.0.0
      *
+     * @param array $context Context in which to get the view name.
+     *
      * @return string Name of the view.
      */
-    protected function getViewName()
+    protected function getViewName(array $context)
     {
-        return $this->config['templates'][$this->getTemplateName()]['view_name'];
-    }
-
-    /**
-     * Get the location of the view that is used for rendering.
-     *
-     * @since 1.0.0
-     *
-     * @param array $context Context for which to get the view location.
-     *
-     * @return string
-     */
-    protected function getViewLocation(array $context)
-    {
-        return $this->getViewRoot() . '/templates/' . $context['format'] . '/' . $this->getViewName();
-    }
-
-    /**
-     * Get the root location of the view that is used for rendering.
-     *
-     * @since 1.0.0
-     *
-     * @return string
-     */
-    protected function getViewRoot()
-    {
-        $viewRoots   = $this->config['view_root_locations'];
-        $viewRootKey = $this->config['templates'][$this->getTemplateName()]['view_location'];
-
-        return $viewRoots[$viewRootKey];
+        return $this->config['templates'][$this->getTemplateName()]['view_name']
+               . '.' . $context['format'];
     }
 }

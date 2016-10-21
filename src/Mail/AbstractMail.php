@@ -11,10 +11,16 @@
 
 namespace BrightNucleus\ChainMail\Mail;
 
+use BrightNucleus\Chainmail\Exception\InvalidTemplateException;
 use BrightNucleus\ChainMail\MailInterface;
 use BrightNucleus\ChainMail\Support\Factory;
 use BrightNucleus\ChainMail\TemplateInterface;
 use BrightNucleus\Config\ConfigInterface;
+use BrightNucleus\Config\Exception\FailedToProcessConfigException;
+use BrightNucleus\View;
+use BrightNucleus\View\Location\FilesystemLocation;
+use BrightNucleus\View\ViewBuilder;
+use Exception;
 use RuntimeException;
 
 /**
@@ -65,16 +71,38 @@ abstract class AbstractMail implements MailInterface
     protected $format;
 
     /**
+     * ViewBuilder to create template and section views.
+     *
+     * @since 1.0.0
+     *
+     * @var ViewBuilder
+     */
+    protected $viewBuilder;
+
+    /**
      * Instantiate an AbstractMail object.
      *
      * @since 1.0.0
      *
-     * @param ConfigInterface $config
+     * @param ConfigInterface $config The Config to use.
+     *
+     * @throws FailedToProcessConfigException If the Config could not be processed.
      */
     public function __construct(ConfigInterface $config)
     {
         $this->config = $config;
         $this->setFormat();
+
+        $this->viewBuilder = new ViewBuilder($config
+            ? $config->getSubConfig('ViewBuilder')
+            : View::getDefaultConfig()
+        );
+
+        foreach ($this->config->getKey('view_root_locations') as $folder) {
+            $this->viewBuilder->addLocation(
+                new FilesystemLocation($folder)
+            );
+        }
     }
 
     /**
@@ -107,12 +135,28 @@ abstract class AbstractMail implements MailInterface
      * @param string|TemplateInterface $template Template to use for the
      *                                           renderer.
      *
-     * @throws RuntimeException
+     * @throws InvalidTemplateException If the template class could not be instantiated.
+     * @throws InvalidTemplateException If the template type is not recognized.
      */
     public function setTemplate($template)
     {
-        if (is_string($template)) {
-            $template = $this->createTemplate($template);
+        try {
+            if (is_string($template)) {
+                $template = $this->createTemplate($template);
+            }
+        } catch (Exception $exception) {
+            throw new InvalidTemplateException(
+                'Could not instantiate the template class "%1$s". Reason: "%2$s".',
+                $template,
+                $exception->getMessage()
+            );
+        }
+
+        if (! $template instanceof TemplateInterface) {
+            throw new InvalidTemplateException(
+                'Could not set the template, invalid type.',
+                (array)$template
+            );
         }
         $this->template = $template;
     }
@@ -140,34 +184,47 @@ abstract class AbstractMail implements MailInterface
      * @param array $context The context in which to render the email.
      *
      * @return string Rendered output of the email
-     * @throws RuntimeException
      */
     public function render(array $context)
     {
-
         $template = $this->getTemplate();
 
         $context['template'] = $template;
 
-        $sections = $template->getUsedSections();
-
-        $sectionFactory = new Factory($this->config, 'sections');
-        foreach ($sections as $section) {
-            $content = null;
-            if (array_key_exists($section, $this->sectionContent)) {
-                $content = $this->sectionContent[$section];
-            }
-            $context['sections'][$section] = $sectionFactory->create(
-                $section,
-                [$section, $content]
-            );
-        }
+        $this->instantiateSections($template->getUsedSections(), $context);
 
         $context['format'] = $this->getFormat();
 
         $context = $this->setContext($context);
 
         return $template->render($context);
+    }
+
+    /**
+     * Instantiate the requested sections for a template.
+     *
+     * @since 1.0.0
+     *
+     * @param array $sections Sections to instantiate.
+     * @param array $context  The context in which to instantiate the sections.
+     */
+    protected function instantiateSections(array $sections, array &$context)
+    {
+        $sectionFactory = new Factory($this->config, 'sections');
+
+        foreach ($sections as $section) {
+
+            $content = null;
+
+            if (array_key_exists($section, $this->sectionContent)) {
+                $content = $this->sectionContent[$section];
+            }
+
+            $context['sections'][$section] = $sectionFactory->create(
+                $section,
+                [$section, $content, $this->viewBuilder]
+            );
+        }
     }
 
     /**
@@ -218,7 +275,7 @@ abstract class AbstractMail implements MailInterface
     {
         $templateFactory = new Factory($this->config, 'templates');
 
-        return $templateFactory->create($template, [$template]);
+        return $templateFactory->create($template, [$template, $this->viewBuilder]);
     }
 
     /**

@@ -71,7 +71,7 @@ class ChainMail
      *
      * @return string Rendered HTML.
      */
-    public static function renderSection($sectionType, $context)
+    public static function renderSection($sectionType, array $context)
     {
         /** @var SectionInterface $section */
         $section = $context['sections'][$sectionType];
@@ -89,7 +89,7 @@ class ChainMail
      *
      * @return array Array of strings with section types.
      */
-    public static function getUsedSections($context)
+    public static function getUsedSections(array $context)
     {
         /** @var TemplateInterface $template */
         $template = $context['template'];
@@ -98,7 +98,7 @@ class ChainMail
     }
 
     /**
-     * Render a all used sections.
+     * Render all used sections.
      *
      * @since 1.0.0
      *
@@ -106,7 +106,7 @@ class ChainMail
      *
      * @return string Rendered HTML.
      */
-    public static function renderSections($context)
+    public static function renderSections(array $context)
     {
         $output = '';
 
@@ -122,13 +122,13 @@ class ChainMail
      *
      * @since 1.0.0
      *
-     * @param string|null                   $format   Optional. Format to use.
-     * @param string|TemplateInterface|null $template Optional. Template to be
+     * @param string                   $format        Optional. Format to use.
+     * @param string|TemplateInterface $template      Optional. Template to be
      *                                                used.
      *
      * @return MailInterface
      */
-    public function createMail($format = null, $template = null)
+    public function createMail($format = 'html', $template = 'BasicTemplate')
     {
         $mail_factory = new Factory($this->config, 'mails');
         $mail_class   = $this->config->getKey('formats')[$format]['mail'];

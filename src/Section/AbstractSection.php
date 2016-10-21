@@ -13,8 +13,8 @@ namespace BrightNucleus\ChainMail\Section;
 
 use BrightNucleus\Chainmail\Exception\FailedToInitialiseSectionException;
 use BrightNucleus\ChainMail\SectionInterface;
-use BrightNucleus\ChainMail\Support\Factory;
 use BrightNucleus\Config\ConfigInterface;
+use BrightNucleus\View\ViewBuilder;
 use RuntimeException;
 
 /**
@@ -56,22 +56,30 @@ abstract class AbstractSection implements SectionInterface
     protected $content;
 
     /**
+     * ViewBuilder to create template and section views.
+     *
+     * @since 1.0.0
+     *
+     * @var ViewBuilder
+     */
+    protected $viewBuilder;
+
+    /**
      * Instantiate a AbstractSection object.
      *
      * @since 1.0.0
      *
-     * @param ConfigInterface $config       Configuration settings.
-     * @param array           $arguments    Arguments that are passed through
-     *                                      the constructor. Contained
-     *                                      elements: string $section, string
-     *                                      $content
+     * @param ConfigInterface $config    Configuration settings.
+     * @param array           $arguments Arguments that are passed through the constructor.
+     *                                   Contained elements:
+     *                                   string $section, string $content
      *
      * @throws RuntimeException
      */
-    public function __construct($config, $arguments)
+    public function __construct($config, array $arguments)
     {
         $this->config = $config;
-        list($section, $content) = $arguments;
+        list($section, $content, $this->viewBuilder) = $arguments;
         $this->setSectionName($section);
         $this->content = $content;
     }
@@ -101,10 +109,14 @@ abstract class AbstractSection implements SectionInterface
     protected function setSectionName($section = null)
     {
         if (null === $section) {
-            throw new FailedToInitialiseSectionException('Initialised section without passing it a section name.');
+            throw new FailedToInitialiseSectionException(
+                'Initialised section without passing it a section name.'
+            );
         }
         if (! array_key_exists($section, $this->config['sections'])) {
-            throw new FailedToInitialiseSectionException('Initialised section with an unknown section name.');
+            throw new FailedToInitialiseSectionException(
+                'Initialised section with an unknown section name.'
+            );
         }
         $this->sectionName = $section;
     }
@@ -122,15 +134,13 @@ abstract class AbstractSection implements SectionInterface
     public function render(array $context)
     {
 
-        $viewLocation = $this->getViewLocation($context);
-        $viewType     = $this->config['view_type'];
-
-        $viewFactory = new Factory($this->config, 'view_types');
-        $view        = $viewFactory->create($viewType, $viewLocation);
+        $viewName = $this->getViewName($context);
+        $view     = $this->viewBuilder->create($viewName);
 
         $context['css_class'] = $this->getCSSClass();
+        $context['content']   = $this->content;
 
-        return $view->render($context, $this->content);
+        return $view->render($context);
     }
 
     /**
@@ -138,40 +148,14 @@ abstract class AbstractSection implements SectionInterface
      *
      * @since 1.0.0
      *
+     * @param array $context The context in which to render the template.
+     *
      * @return string Name of the view.
      */
-    protected function getViewName()
+    protected function getViewName(array $context)
     {
-        return $this->config['sections'][$this->getSectionName()]['view_name'];
-    }
-
-    /**
-     * Get the location of the view that is used for rendering.
-     *
-     * @since 1.0.0
-     *
-     * @param array $context Context for which to get the view location.
-     *
-     * @return string
-     */
-    protected function getViewLocation(array $context)
-    {
-        return $this->getViewRoot() . '/sections/' . $context['format'] . '/' . $this->getViewName();
-    }
-
-    /**
-     * Get the root location of the view that is used for rendering.
-     *
-     * @since 1.0.0
-     *
-     * @return string
-     */
-    protected function getViewRoot()
-    {
-        $viewRoots   = $this->config['view_root_locations'];
-        $viewRootKey = $this->config['sections'][$this->getSectionName()]['view_location'];
-
-        return $viewRoots[$viewRootKey];
+        return $this->config['sections'][$this->getSectionName()]['view_name']
+               . '.' . $context['format'];
     }
 
     /**

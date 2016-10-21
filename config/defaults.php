@@ -22,13 +22,8 @@ return [
      * specific view to be rendered.
      */
     'view_root_locations' => [
-        'default' => __DIR__ . '/../views',
+        'default' => realpath( __DIR__ . '/../views' ),
     ],
-
-    /*
-     * Type of view rendering system to use.
-     */
-    'view_type'           => 'PHPView',
 
     /*
      * The default template to when none is specified.
@@ -69,10 +64,10 @@ return [
      */
     'mails'               => [
         'HTMLMail' => [
-            'class_name' => '\BrightNucleus\ChainMail\Mail\HTMLMail',
+            'class_name' => 'BrightNucleus\ChainMail\Mail\HTMLMail',
         ],
         'TextMail' => [
-            'class_name' => '\BrightNucleus\ChainMail\Mail\TextMail',
+            'class_name' => 'BrightNucleus\ChainMail\Mail\TextMail',
         ],
     ],
 
@@ -81,10 +76,10 @@ return [
      */
     'validators'          => [
         'HTMLValidator' => [
-            'class_name' => '\BrightNucleus\ChainMail\Validator\HTMLValidator',
+            'class_name' => 'BrightNucleus\ChainMail\Validator\HTMLValidator',
         ],
         'TextValidator' => [
-            'class_name' => '\BrightNucleus\ChainMail\Validator\TextValidator',
+            'class_name' => 'BrightNucleus\ChainMail\Validator\TextValidator',
         ],
     ],
 
@@ -93,19 +88,30 @@ return [
      */
     'sanitizers'          => [
         'HTMLSanitizer' => [
-            'class_name' => '\BrightNucleus\ChainMail\Sanitizer\HTMLSanitizer',
+            'class_name' => 'BrightNucleus\ChainMail\Sanitizer\HTMLSanitizer',
         ],
         'TextSanitizer' => [
-            'class_name' => '\BrightNucleus\ChainMail\Sanitizer\TextSanitizer',
+            'class_name' => 'BrightNucleus\ChainMail\Sanitizer\TextSanitizer',
         ],
     ],
 
     /*
-     * The `ViewInterface` implementations that are provided.
+     * ViewBuilder configuration that is passed into the `brightnucleus/view` component.
      */
-    'view_types'          => [
-        'PHPView' => [
-            'class_name' => '\BrightNucleus\ChainMail\View\PHPView',
+    'ViewBuilder'         => [
+        'EngineFinder' => [
+            'ClassName'  => 'BrightNucleus\View\Engine\EngineFinder',
+            'Engines'    => [
+                'PHPEngine' => 'BrightNucleus\View\Engine\PHPEngine',
+            ],
+            'NullObject' => 'BrightNucleus\View\Engine\NullEngine',
+        ],
+        'ViewFinder'   => [
+            'ClassName'  => 'BrightNucleus\View\View\ViewFinder',
+            'Views'      => [
+                'MailView' => 'BrightNucleus\ChainMail\View\MailView',
+            ],
+            'NullObject' => 'BrightNucleus\View\View\NullView',
         ],
     ],
 
@@ -117,17 +123,16 @@ return [
      */
     'templates'           => [
         'BasicTemplate'       => [
-            'class_name'    => '\BrightNucleus\ChainMail\Template\GenericTemplate',
+            'class_name'    => 'BrightNucleus\ChainMail\Template\GenericTemplate',
             'sections'      => [
                 'HeaderSection',
                 'BodySection',
                 'FooterSection',
             ],
             'view_name'     => 'GenericTemplate',
-            'view_location' => 'default',
         ],
         'HeroTemplate'        => [
-            'class_name'    => '\BrightNucleus\ChainMail\Template\GenericTemplate',
+            'class_name'    => 'BrightNucleus\ChainMail\Template\GenericTemplate',
             'sections'      => [
                 'HeaderSection',
                 'HeroSection',
@@ -135,10 +140,9 @@ return [
                 'FooterSection',
             ],
             'view_name'     => 'GenericTemplate',
-            'view_location' => 'default',
         ],
         'SidebarTemplate'     => [
-            'class_name'    => '\BrightNucleus\ChainMail\Template\GenericTemplate',
+            'class_name'    => 'BrightNucleus\ChainMail\Template\GenericTemplate',
             'sections'      => [
                 'HeaderSection',
                 'BodySection',
@@ -146,10 +150,9 @@ return [
                 'FooterSection',
             ],
             'view_name'     => 'GenericTemplate',
-            'view_location' => 'default',
         ],
         'HeroSidebarTemplate' => [
-            'class_name'    => '\BrightNucleus\ChainMail\Template\GenericTemplate',
+            'class_name'    => 'BrightNucleus\ChainMail\Template\GenericTemplate',
             'sections'      => [
                 'HeaderSection',
                 'HeroSection',
@@ -158,7 +161,6 @@ return [
                 'FooterSection',
             ],
             'view_name'     => 'GenericTemplate',
-            'view_location' => 'default',
         ],
     ],
 
@@ -170,33 +172,28 @@ return [
     'sections'            => [
         'HeaderSection'  => [
             'css_class'     => 'header',
-            'class_name'    => '\BrightNucleus\ChainMail\Section\GenericSection',
+            'class_name'    => 'BrightNucleus\ChainMail\Section\GenericSection',
             'view_name'     => 'GenericSection',
-            'view_location' => 'default',
         ],
         'BodySection'    => [
             'css_class'     => 'body',
-            'class_name'    => '\BrightNucleus\ChainMail\Section\GenericSection',
+            'class_name'    => 'BrightNucleus\ChainMail\Section\GenericSection',
             'view_name'     => 'GenericSection',
-            'view_location' => 'default',
         ],
         'FooterSection'  => [
             'css_class'     => 'footer',
-            'class_name'    => '\BrightNucleus\ChainMail\Section\GenericSection',
+            'class_name'    => 'BrightNucleus\ChainMail\Section\GenericSection',
             'view_name'     => 'GenericSection',
-            'view_location' => 'default',
         ],
         'HeroSection'    => [
             'css_class'     => 'hero',
-            'class_name'    => '\BrightNucleus\ChainMail\Section\GenericSection',
+            'class_name'    => 'BrightNucleus\ChainMail\Section\GenericSection',
             'view_name'     => 'GenericSection',
-            'view_location' => 'default',
         ],
         'SidebarSection' => [
             'css_class'     => 'sidebar',
-            'class_name'    => '\BrightNucleus\ChainMail\Section\GenericSection',
+            'class_name'    => 'BrightNucleus\ChainMail\Section\GenericSection',
             'view_name'     => 'GenericSection',
-            'view_location' => 'default',
         ],
     ],
 ];

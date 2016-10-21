@@ -1,6 +1,6 @@
 <?php
 /**
- * GenericSection HTML View
+ * GenericTemplate Text View.
  *
  * @package   BrightNucleus/Chainmail
  * @author    Alain Schlesser <alain.schlesser@gmail.com>
@@ -11,8 +11,4 @@
 
 namespace BrightNucleus\ChainMail;
 
-if ( ! $content) {
-    return;
-}
-?>
-<div class="<?php echo $context['css_class']; ?>"><?php echo $content; ?></div>
+echo ChainMail::renderSections($context);
