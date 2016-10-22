@@ -12,14 +12,14 @@
 namespace BrightNucleus\ChainMail;
 
 /**
- * Interface ValidatorInterface.
+ * Interface Validator.
  *
  * @since   1.0.0
  *
  * @package BrightNucleus\ChainMail
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
-interface ValidatorInterface
+interface Validator
 {
 
     /**

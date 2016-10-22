@@ -22,7 +22,7 @@ return [
      * specific view to be rendered.
      */
     'view_root_locations' => [
-        'default' => realpath( __DIR__ . '/../views' ),
+        'default' => realpath(__DIR__ . '/../views'),
     ],
 
     /*
@@ -32,8 +32,8 @@ return [
 
     /*
      * The formats in which an email can be rendered.
-     * Each format needs a `MailInterface` implementation, a
-     * `ValidatorInterface` implementation, as well as a `SanitizerInterface`
+     * Each format needs a `Mail` implementation, a
+     * `Validator` implementation, as well as a `Sanitizer`
      * implementation.
      */
     'formats'             => [
@@ -60,7 +60,7 @@ return [
     ],
 
     /*
-     * The `MailInterface` implementations that are provided.
+     * The `Mail` implementations that are provided.
      */
     'mails'               => [
         'HTMLMail' => [
@@ -72,7 +72,7 @@ return [
     ],
 
     /*
-     * The `ValidatorInterface` implementations that are provided.
+     * The `Validator` implementations that are provided.
      */
     'validators'          => [
         'HTMLValidator' => [
@@ -84,7 +84,7 @@ return [
     ],
 
     /*
-     * The `SanitizerInterface` implementations that are provided.
+     * The `Sanitizer` implementations that are provided.
      */
     'sanitizers'          => [
         'HTMLSanitizer' => [
@@ -99,101 +99,92 @@ return [
      * ViewBuilder configuration that is passed into the `brightnucleus/view` component.
      */
     'ViewBuilder'         => [
-        'EngineFinder' => [
-            'ClassName'  => 'BrightNucleus\View\Engine\EngineFinder',
-            'Engines'    => [
-                'PHPEngine' => 'BrightNucleus\View\Engine\PHPEngine',
-            ],
-            'NullObject' => 'BrightNucleus\View\Engine\NullEngine',
-        ],
-        'ViewFinder'   => [
-            'ClassName'  => 'BrightNucleus\View\View\ViewFinder',
-            'Views'      => [
+        'ViewFinder' => [
+            'Views' => [
                 'MailView' => 'BrightNucleus\ChainMail\View\MailView',
             ],
-            'NullObject' => 'BrightNucleus\View\View\NullView',
         ],
     ],
 
     /*
-     * The `TemplateInterface` implementations that are provided.
+     * The `Template` implementations that are provided.
      *
      * Each template also defines what sections it intends to use, and what
      * view it intends to use for rendering.
      */
     'templates'           => [
         'BasicTemplate'       => [
-            'class_name'    => 'BrightNucleus\ChainMail\Template\GenericTemplate',
-            'sections'      => [
+            'class_name' => 'BrightNucleus\ChainMail\Template\GenericTemplate',
+            'sections'   => [
                 'HeaderSection',
                 'BodySection',
                 'FooterSection',
             ],
-            'view_name'     => 'GenericTemplate',
+            'view_name'  => 'GenericTemplate',
         ],
         'HeroTemplate'        => [
-            'class_name'    => 'BrightNucleus\ChainMail\Template\GenericTemplate',
-            'sections'      => [
+            'class_name' => 'BrightNucleus\ChainMail\Template\GenericTemplate',
+            'sections'   => [
                 'HeaderSection',
                 'HeroSection',
                 'BodySection',
                 'FooterSection',
             ],
-            'view_name'     => 'GenericTemplate',
+            'view_name'  => 'GenericTemplate',
         ],
         'SidebarTemplate'     => [
-            'class_name'    => 'BrightNucleus\ChainMail\Template\GenericTemplate',
-            'sections'      => [
+            'class_name' => 'BrightNucleus\ChainMail\Template\GenericTemplate',
+            'sections'   => [
                 'HeaderSection',
                 'BodySection',
                 'SidebarSection',
                 'FooterSection',
             ],
-            'view_name'     => 'GenericTemplate',
+            'view_name'  => 'GenericTemplate',
         ],
         'HeroSidebarTemplate' => [
-            'class_name'    => 'BrightNucleus\ChainMail\Template\GenericTemplate',
-            'sections'      => [
+            'class_name' => 'BrightNucleus\ChainMail\Template\GenericTemplate',
+            'sections'   => [
                 'HeaderSection',
                 'HeroSection',
                 'BodySection',
                 'SidebarSection',
                 'FooterSection',
             ],
-            'view_name'     => 'GenericTemplate',
+            'view_name'  => 'GenericTemplate',
         ],
     ],
 
     /*
-     * The `SectionInterface` implementations that are provided.
+     * The `Section` implementations that are provided.
      *
      * Each section also defines what view it intends to use for rendering.
      */
     'sections'            => [
         'HeaderSection'  => [
-            'css_class'     => 'header',
-            'class_name'    => 'BrightNucleus\ChainMail\Section\GenericSection',
-            'view_name'     => 'GenericSection',
+            'css_class'  => 'header',
+            'class_name' => 'BrightNucleus\ChainMail\Section\GenericSection',
+            'view_name'  => 'GenericSection',
         ],
         'BodySection'    => [
-            'css_class'     => 'body',
-            'class_name'    => 'BrightNucleus\ChainMail\Section\GenericSection',
-            'view_name'     => 'GenericSection',
+            'css_class'  => 'body',
+            'class_name' => 'BrightNucleus\ChainMail\Section\GenericSection',
+            'view_name'  => 'GenericSection',
         ],
         'FooterSection'  => [
-            'css_class'     => 'footer',
-            'class_name'    => 'BrightNucleus\ChainMail\Section\GenericSection',
-            'view_name'     => 'GenericSection',
+            'css_class'  => 'footer',
+            'class_name' => 'BrightNucleus\ChainMail\Section\GenericSection',
+            'view_name'  => 'GenericSection',
         ],
         'HeroSection'    => [
-            'css_class'     => 'hero',
-            'class_name'    => 'BrightNucleus\ChainMail\Section\GenericSection',
-            'view_name'     => 'GenericSection',
+            'css_class'  => 'hero',
+            'class_name' => 'BrightNucleus\ChainMail\Section\GenericSection',
+            'view_name'  => 'GenericSection',
         ],
         'SidebarSection' => [
-            'css_class'     => 'sidebar',
-            'class_name'    => 'BrightNucleus\ChainMail\Section\GenericSection',
-            'view_name'     => 'GenericSection',
+            'css_class'  => 'sidebar',
+            'class_name' => 'BrightNucleus\ChainMail\Section\GenericSection',
+            'view_name'  => 'GenericSection',
         ],
     ],
 ];

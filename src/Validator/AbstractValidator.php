@@ -11,7 +11,7 @@
 
 namespace BrightNucleus\ChainMail\Validator;
 
-use BrightNucleus\ChainMail\ValidatorInterface;
+use BrightNucleus\ChainMail\Validator;
 
 /**
  * Abstract Class AbstractValidator.
@@ -21,7 +21,7 @@ use BrightNucleus\ChainMail\ValidatorInterface;
  * @package BrightNucleus\ChainMail\Validator
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
-abstract class AbstractValidator implements ValidatorInterface
+abstract class AbstractValidator implements Validator
 {
 
 }

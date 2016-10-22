@@ -11,9 +11,9 @@
 
 namespace BrightNucleus\ChainMail\Template;
 
-use BrightNucleus\Chainmail\Exception\FailedToInitialiseTemplateException;
+use BrightNucleus\Chainmail\Exception\FailedToInitialiseTemplate;
 use BrightNucleus\ChainMail\Support\Factory;
-use BrightNucleus\ChainMail\TemplateInterface;
+use BrightNucleus\ChainMail\Template;
 use BrightNucleus\Config\ConfigInterface;
 use BrightNucleus\View\ViewBuilder;
 use RuntimeException;
@@ -26,7 +26,7 @@ use RuntimeException;
  * @package BrightNucleus\ChainMail\Template
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
-abstract class AbstractTemplate implements TemplateInterface
+abstract class AbstractTemplate implements Template
 {
 
     /**
@@ -93,16 +93,16 @@ abstract class AbstractTemplate implements TemplateInterface
      *
      * @param string|null $template Optional. Name of the template.
      *
-     * @throws FailedToInitialiseTemplateException If no template name was passed.
-     * @throws FailedToInitialiseTemplateException If an unknown template name was passed.
+     * @throws FailedToInitialiseTemplate If no template name was passed.
+     * @throws FailedToInitialiseTemplate If an unknown template name was passed.
      */
     protected function setTemplateName($template = null)
     {
         if (null === $template) {
-            throw new FailedToInitialiseTemplateException('Initialised template without passing it a template name.');
+            throw new FailedToInitialiseTemplate('Initialised template without passing it a template name.');
         }
-        if (! array_key_exists($template, $this->config['templates'])) {
-            throw new FailedToInitialiseTemplateException('Initialised template with an unknown template name.');
+        if ( ! array_key_exists($template, $this->config['templates'])) {
+            throw new FailedToInitialiseTemplate('Initialised template with an unknown template name.');
         }
         $this->templateName = $template;
     }

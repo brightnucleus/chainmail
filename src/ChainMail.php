@@ -49,7 +49,7 @@ class ChainMail
 
         $defaults = ConfigFactory::create(include(self::DEFAULT_CONFIG));
 
-        if (! $config) {
+        if ( ! $config) {
             $this->config = $defaults;
 
             return;
@@ -73,7 +73,7 @@ class ChainMail
      */
     public static function renderSection($sectionType, array $context)
     {
-        /** @var SectionInterface $section */
+        /** @var Section $section */
         $section = $context['sections'][$sectionType];
 
         return $section->render($context);
@@ -91,7 +91,7 @@ class ChainMail
      */
     public static function getUsedSections(array $context)
     {
-        /** @var TemplateInterface $template */
+        /** @var Template $template */
         $template = $context['template'];
 
         return $template->getUsedSections();
@@ -122,11 +122,10 @@ class ChainMail
      *
      * @since 1.0.0
      *
-     * @param string                   $format        Optional. Format to use.
-     * @param string|TemplateInterface $template      Optional. Template to be
-     *                                                used.
+     * @param string          $format   Optional. Format to use.
+     * @param string|Template $template Optional. Template to be used.
      *
-     * @return MailInterface
+     * @return Mail
      */
     public function createMail($format = 'html', $template = 'BasicTemplate')
     {

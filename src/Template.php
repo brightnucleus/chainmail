@@ -12,22 +12,31 @@
 namespace BrightNucleus\ChainMail;
 
 /**
- * Interface SectionInterface.
+ * Interface Template.
  *
  * @since   1.0.0
  *
  * @package BrightNucleus\ChainMail
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
-interface SectionInterface extends Renderable
+interface Template extends Renderable
 {
 
     /**
-     * Get the name of the Section.
+     * Get an array of Sections that are used by this template.
      *
      * @since 1.0.0
      *
-     * @return string Name of the section.
+     * @return array Sections that are used by this template.
      */
-    public function getSectionName();
+    public function getUsedSections();
+
+    /**
+     * Get the name of the Template.
+     *
+     * @since 1.0.0
+     *
+     * @return string Name of the template.
+     */
+    public function getTemplateName();
 }

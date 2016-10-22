@@ -14,14 +14,14 @@ namespace BrightNucleus\Chainmail\Exception;
 use BrightNucleus\Exception\RuntimeException;
 
 /**
- * Class FailedToInitialiseSectionException.
+ * Class InvalidTemplate.
  *
  * @since   1.0.0
  *
  * @package BrightNucleus\Chainmail\Exception
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
-class FailedToInitialiseSectionException extends RuntimeException implements ChainmailException
+class InvalidTemplate extends RuntimeException implements ChainmailException
 {
 
 }

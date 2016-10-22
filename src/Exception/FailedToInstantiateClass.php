@@ -14,14 +14,14 @@ namespace BrightNucleus\Chainmail\Exception;
 use BrightNucleus\Exception\RuntimeException;
 
 /**
- * Class FailedToInitialiseTemplateException.
+ * Class FailedToInstantiateClass.
  *
  * @since   1.0.0
  *
  * @package BrightNucleus\Chainmail\Exception
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
-class FailedToInitialiseTemplateException extends RuntimeException implements ChainmailException
+class FailedToInstantiateClass extends RuntimeException implements ChainmailException
 {
 
 }

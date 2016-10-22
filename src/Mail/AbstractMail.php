@@ -11,10 +11,10 @@
 
 namespace BrightNucleus\ChainMail\Mail;
 
-use BrightNucleus\Chainmail\Exception\InvalidTemplateException;
-use BrightNucleus\ChainMail\MailInterface;
+use BrightNucleus\Chainmail\Exception\InvalidTemplate;
+use BrightNucleus\ChainMail\Mail;
 use BrightNucleus\ChainMail\Support\Factory;
-use BrightNucleus\ChainMail\TemplateInterface;
+use BrightNucleus\ChainMail\Template;
 use BrightNucleus\Config\ConfigInterface;
 use BrightNucleus\Config\Exception\FailedToProcessConfigException;
 use BrightNucleus\View;
@@ -31,7 +31,7 @@ use RuntimeException;
  * @package BrightNucleus\ChainMail
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
-abstract class AbstractMail implements MailInterface
+abstract class AbstractMail implements Mail
 {
 
     /**
@@ -48,7 +48,7 @@ abstract class AbstractMail implements MailInterface
      *
      * @since 1.0.0
      *
-     * @var TemplateInterface
+     * @var Template
      */
     protected $template;
 
@@ -110,13 +110,13 @@ abstract class AbstractMail implements MailInterface
      *
      * @since 1.0.0
      *
-     * @return TemplateInterface Reference to the template that is used.
+     * @return Template Reference to the template that is used.
      * @throws RuntimeException
      */
     public function getTemplate()
     {
 
-        if (! $this->template) {
+        if ( ! $this->template) {
             $this->setDefaultTemplate();
         }
 
@@ -132,11 +132,11 @@ abstract class AbstractMail implements MailInterface
      *
      * @since 1.0.0
      *
-     * @param string|TemplateInterface $template Template to use for the
+     * @param string|Template $template          Template to use for the
      *                                           renderer.
      *
-     * @throws InvalidTemplateException If the template class could not be instantiated.
-     * @throws InvalidTemplateException If the template type is not recognized.
+     * @throws InvalidTemplate If the template class could not be instantiated.
+     * @throws InvalidTemplate If the template type is not recognized.
      */
     public function setTemplate($template)
     {
@@ -145,15 +145,15 @@ abstract class AbstractMail implements MailInterface
                 $template = $this->createTemplate($template);
             }
         } catch (Exception $exception) {
-            throw new InvalidTemplateException(
+            throw new InvalidTemplate(
                 'Could not instantiate the template class "%1$s". Reason: "%2$s".',
                 $template,
                 $exception->getMessage()
             );
         }
 
-        if (! $template instanceof TemplateInterface) {
-            throw new InvalidTemplateException(
+        if ( ! $template instanceof Template) {
+            throw new InvalidTemplate(
                 'Could not set the template, invalid type.',
                 (array)$template
             );
@@ -268,7 +268,7 @@ abstract class AbstractMail implements MailInterface
      *
      * @param string $template Template to instantiate.
      *
-     * @return TemplateInterface $template Newly created instance.
+     * @return Template $template Newly created instance.
      * @throws RuntimeException
      */
     protected function createTemplate($template)

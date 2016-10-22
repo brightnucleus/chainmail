@@ -12,31 +12,25 @@
 namespace BrightNucleus\ChainMail;
 
 /**
- * Interface TemplateInterface.
+ * Interface Sanitizer.
  *
  * @since   1.0.0
  *
  * @package BrightNucleus\ChainMail
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
-interface TemplateInterface extends Renderable
+interface Sanitizer
 {
 
     /**
-     * Get an array of Sections that are used by this template.
+     * Sanitize content for a given context.
      *
      * @since 1.0.0
      *
-     * @return array Sections that are used by this template.
-     */
-    public function getUsedSections();
-
-    /**
-     * Get the name of the Template.
+     * @param string $content Content to sanitize.
+     * @param array  $context Context in which to sanitize.
      *
-     * @since 1.0.0
-     *
-     * @return string Name of the template.
+     * @return string Sanitized content.
      */
-    public function getTemplateName();
+    public function sanitize($content, array $context);
 }

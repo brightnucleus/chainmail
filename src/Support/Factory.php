@@ -11,8 +11,8 @@
 
 namespace BrightNucleus\ChainMail\Support;
 
-use BrightNucleus\Chainmail\Exception\FailedToInstantiateClassException;
-use BrightNucleus\Chainmail\Exception\FailedToInstantiateFactoryException;
+use BrightNucleus\Chainmail\Exception\FailedToInstantiateClass;
+use BrightNucleus\Chainmail\Exception\FailedToInstantiateFactory;
 use BrightNucleus\Config\ConfigInterface;
 
 /**
@@ -52,15 +52,15 @@ class Factory
      * @param ConfigInterface $config  Configuration settings.
      * @param string          $element The type of element to instantiate a factory for.
      *
-     * @throws FailedToInstantiateFactoryException When an unknown element type is requested.
+     * @throws FailedToInstantiateFactory When an unknown element type is requested.
      */
     public function __construct(ConfigInterface $config, $element)
     {
 
         $this->config = $config;
 
-        if (! $this->config->hasKey($element)) {
-            throw new FailedToInstantiateFactoryException(sprintf(
+        if ( ! $this->config->hasKey($element)) {
+            throw new FailedToInstantiateFactory(sprintf(
                 'Could not instantiate Factory for unknown Element Type "%1$s".',
                 $element
             ));
@@ -78,15 +78,15 @@ class Factory
      * @param mixed  $arguments Optional. Arguments to pass to the object.
      *
      * @return object New instance of the requested class.
-     * @throws FailedToInstantiateClassException If an unknown element type is requested.
+     * @throws FailedToInstantiateClass If an unknown element type is requested.
      */
     public function create($type, $arguments = null)
     {
 
         $classMap = $this->config[$this->element];
 
-        if (! array_key_exists($type, $classMap)) {
-            throw new FailedToInstantiateClassException(sprintf(
+        if ( ! array_key_exists($type, $classMap)) {
+            throw new FailedToInstantiateClass(sprintf(
                 'Could not create object, unknown Type "%1$s" for "%2$s" elements.',
                 $type,
                 $this->element

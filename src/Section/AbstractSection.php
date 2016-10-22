@@ -11,8 +11,8 @@
 
 namespace BrightNucleus\ChainMail\Section;
 
-use BrightNucleus\Chainmail\Exception\FailedToInitialiseSectionException;
-use BrightNucleus\ChainMail\SectionInterface;
+use BrightNucleus\Chainmail\Exception\FailedToInitialiseSection;
+use BrightNucleus\ChainMail\Section;
 use BrightNucleus\Config\ConfigInterface;
 use BrightNucleus\View\ViewBuilder;
 use RuntimeException;
@@ -25,7 +25,7 @@ use RuntimeException;
  * @package BrightNucleus\ChainMail
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
-abstract class AbstractSection implements SectionInterface
+abstract class AbstractSection implements Section
 {
 
     /**
@@ -103,18 +103,18 @@ abstract class AbstractSection implements SectionInterface
      *
      * @param string|null $section Optional. Name of the section.
      *
-     * @throws FailedToInitialiseSectionException If no section name was passed.
-     * @throws FailedToInitialiseSectionException If an unknown section name was passed.
+     * @throws FailedToInitialiseSection If no section name was passed.
+     * @throws FailedToInitialiseSection If an unknown section name was passed.
      */
     protected function setSectionName($section = null)
     {
         if (null === $section) {
-            throw new FailedToInitialiseSectionException(
+            throw new FailedToInitialiseSection(
                 'Initialised section without passing it a section name.'
             );
         }
-        if (! array_key_exists($section, $this->config['sections'])) {
-            throw new FailedToInitialiseSectionException(
+        if ( ! array_key_exists($section, $this->config['sections'])) {
+            throw new FailedToInitialiseSection(
                 'Initialised section with an unknown section name.'
             );
         }

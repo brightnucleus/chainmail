@@ -14,14 +14,14 @@ namespace BrightNucleus\Chainmail\Exception;
 use BrightNucleus\Exception\RuntimeException;
 
 /**
- * Class FailedToInstantiateClassException.
+ * Class FailedToInstantiateFactory.
  *
  * @since   1.0.0
  *
  * @package BrightNucleus\Chainmail\Exception
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
-class FailedToInstantiateClassException extends RuntimeException implements ChainmailException
+class FailedToInstantiateFactory extends RuntimeException implements ChainmailException
 {
 
 }

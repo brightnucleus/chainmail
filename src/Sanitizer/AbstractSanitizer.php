@@ -11,7 +11,7 @@
 
 namespace BrightNucleus\ChainMail\Sanitizer;
 
-use BrightNucleus\ChainMail\SanitizerInterface;
+use BrightNucleus\ChainMail\Sanitizer;
 
 /**
  * Abstract Class AbstractSanitizer.
@@ -21,7 +21,7 @@ use BrightNucleus\ChainMail\SanitizerInterface;
  * @package BrightNucleus\ChainMail\Sanitizer
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
-abstract class AbstractSanitizer implements SanitizerInterface
+abstract class AbstractSanitizer implements Sanitizer
 {
 
 }

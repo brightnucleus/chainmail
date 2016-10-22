@@ -14,14 +14,14 @@ namespace BrightNucleus\ChainMail;
 use RuntimeException;
 
 /**
- * Interface MailInterface.
+ * Interface Mail.
  *
  * @since   1.0.0
  *
  * @package BrightNucleus\ChainMail
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
-interface MailInterface extends Renderable
+interface Mail extends Renderable
 {
 
     /**
@@ -29,7 +29,7 @@ interface MailInterface extends Renderable
      *
      * @since 1.0.0
      *
-     * @param string|TemplateInterface $template Template to use.
+     * @param string|Template $template Template to use.
      *
      * @return void
      */
@@ -40,7 +40,7 @@ interface MailInterface extends Renderable
      *
      * @since 1.0.0
      *
-     * @return TemplateInterface
+     * @return Template
      */
     public function getTemplate();
 

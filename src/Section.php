@@ -12,25 +12,22 @@
 namespace BrightNucleus\ChainMail;
 
 /**
- * Interface SanitizerInterface.
+ * Interface Section.
  *
  * @since   1.0.0
  *
  * @package BrightNucleus\ChainMail
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
-interface SanitizerInterface
+interface Section extends Renderable
 {
 
     /**
-     * Sanitize content for a given context.
+     * Get the name of the Section.
      *
      * @since 1.0.0
      *
-     * @param string $content Content to sanitize.
-     * @param array  $context Context in which to sanitize.
-     *
-     * @return string Sanitized content.
+     * @return string Name of the section.
      */
-    public function sanitize($content, array $context);
+    public function getSectionName();
 }
