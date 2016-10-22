@@ -55,7 +55,7 @@ class ChainMail
             return;
         }
 
-        $this->config = ConfigFactory::create(array_merge(
+        $this->config = ConfigFactory::create(array_replace_recursive(
                 (array)$defaults,
                 (array)$config)
         );

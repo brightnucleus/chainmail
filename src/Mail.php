@@ -11,6 +11,7 @@
 
 namespace BrightNucleus\ChainMail;
 
+use BrightNucleus\ChainMail\Support\EmailAddress;
 use RuntimeException;
 
 /**
@@ -31,7 +32,7 @@ interface Mail extends Renderable
      *
      * @param string|Template $template Template to use.
      *
-     * @return void
+     * @return Mail
      */
     public function setTemplate($template);
 
@@ -52,8 +53,19 @@ interface Mail extends Renderable
      * @param string $type    Type of section to add.
      * @param string $content Content of the section.
      *
-     * @return void
+     * @return Mail
      * @throws RuntimeException
      */
     public function addSection($type, $content);
+
+    /**
+     * Send the email to one or more recipients.
+     *
+     * @since 1.0.0
+     *
+     * @param Recipients|EmailAddress|array|string $recipients
+     *
+     * @return Mail
+     */
+    public function sendTo($recipients);
 }

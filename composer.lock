@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "43b6b59a1b6d90d6416e517280c6d2ec",
-    "content-hash": "414f3d15e3d55014ee73ab8a9cb977d6",
+    "hash": "4ae67dbaddc4dab07609f317f2dc0fee",
+    "content-hash": "8339e15e5bed4aba721a610a4322fac0",
     "packages": [
         {
             "name": "brightnucleus/config",

@@ -13,6 +13,8 @@ namespace BrightNucleus\ChainMail\Mail;
 
 use BrightNucleus\Chainmail\Exception\InvalidTemplate;
 use BrightNucleus\ChainMail\Mail;
+use BrightNucleus\ChainMail\Recipients;
+use BrightNucleus\ChainMail\Support\EmailAddress;
 use BrightNucleus\ChainMail\Support\Factory;
 use BrightNucleus\ChainMail\Template;
 use BrightNucleus\Config\ConfigInterface;
@@ -95,7 +97,7 @@ abstract class AbstractMail implements Mail
 
         $this->viewBuilder = new ViewBuilder($config
             ? $config->getSubConfig('ViewBuilder')
-            : View::getDefaultConfig()
+            : null
         );
 
         foreach ($this->config->getKey('view_root_locations') as $folder) {
@@ -135,6 +137,7 @@ abstract class AbstractMail implements Mail
      * @param string|Template $template          Template to use for the
      *                                           renderer.
      *
+     * @return Mail
      * @throws InvalidTemplate If the template class could not be instantiated.
      * @throws InvalidTemplate If the template type is not recognized.
      */
@@ -159,6 +162,8 @@ abstract class AbstractMail implements Mail
             );
         }
         $this->template = $template;
+
+        return $this;
     }
 
     /**
@@ -198,6 +203,49 @@ abstract class AbstractMail implements Mail
         $context = $this->setContext($context);
 
         return $template->render($context);
+    }
+
+    /**
+     * Send the email to one or more recipients.
+     *
+     * @since 1.0.0
+     *
+     * @param Recipients|EmailAddress|array|string $recipients
+     *
+     * @return Mail
+     */
+    public function sendTo($recipients)
+    {
+        if ($recipients instanceof EmailAddress) {
+            return $this->executeSend($recipients);
+        }
+
+        if (is_string($recipients)) {
+            return $this->sendTo(new EmailAddress($recipients));
+        }
+
+        if ($recipients instanceof Recipients) {
+            array_walk($recipients, [$this, 'sendTo']);
+
+            return $this;
+        }
+    }
+
+    /**
+     * Execute the sending of one individual email.
+     *
+     * @since 1.0.0
+     *
+     * @param EmailAddress $recipient Recipient to send the email to.
+     *
+     * @return Mail
+     */
+    protected function executeSend(EmailAddress $recipient)
+    {
+        // Do the actual sending.
+        echo "Sending email to ${recipient}...";
+
+        return $this;
     }
 
     /**
