@@ -25,28 +25,38 @@ use Doctrine\Common\Collections\ArrayCollection;
 class Recipients extends ArrayCollection
 {
 
+    /**
+     * Instantiate a Recipients object.
+     *
+     * @param array $emails Array of email addresses and/or recipients.
+     */
     public function __construct(array $emails)
     {
-        parent::__construct(array_filter(
-            array_map(function ($value) {
-                if ($value instanceof EmailAddress) {
-                    return $value;
-                }
-
-                return new EmailAddress($value);
-            }, $emails)
-        ));
+        parent::__construct([]);
+        $this->add($emails);
     }
 
     /**
      * Add an email address to the Recipients collection.
      *
-     * @param mixed $email Email address to add.
+     * @param Recipients|EmailAddress|array|string $email Email address to add.
      *
      * @return static
      */
     public function add($email)
     {
+        if ($email instanceof EmailAddress) {
+            parent::add($email);
+
+            return $this;
+        }
+
+        if (is_array($email) || $email instanceof Recipients) {
+            array_walk($email, [$this, 'add']);
+
+            return $this;
+        }
+
         parent::add(new EmailAddress($email));
 
         return $this;

@@ -9,6 +9,8 @@
  * @copyright 2016 Alain Schlesser, Bright Nucleus
  */
 
+namespace BrightNucleus\ChainMail;
+
 /**
  * Class MailRendererTest.
  *
@@ -16,7 +18,7 @@
  *
  * @author Alain Schlesser <alain.schlesser@gmail.com>
  */
-class MailRendererTest extends PHPUnit_Framework_TestCase
+class MailRendererTest extends \PHPUnit_Framework_TestCase
 {
 
 }

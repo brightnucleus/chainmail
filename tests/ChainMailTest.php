@@ -9,7 +9,11 @@
  * @copyright 2016 Alain Schlesser, Bright Nucleus
  */
 
-use BrightNucleus\ChainMail\ChainMail;
+namespace BrightNucleus\ChainMail;
+
+use BrightNucleus\ChainMail\Mail\HTMLMail;
+use BrightNucleus\ChainMail\Mail\TextMail;
+use BrightNucleus\ChainMail\Template\GenericTemplate;
 
 /**
  * Class ChainMailTest.
@@ -18,7 +22,7 @@ use BrightNucleus\ChainMail\ChainMail;
  *
  * @author Alain Schlesser <alain.schlesser@gmail.com>
  */
-class ChainMailTest extends PHPUnit_Framework_TestCase
+class ChainMailTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -60,50 +64,50 @@ class ChainMailTest extends PHPUnit_Framework_TestCase
             [
                 'html',
                 'BasicTemplate',
-                'BrightNucleus\ChainMail\Mail\HTMLMail',
-                'BrightNucleus\ChainMail\Template\GenericTemplate',
+                HTMLMail::class,
+                GenericTemplate::class,
             ],
             [
                 'text',
                 'BasicTemplate',
-                'BrightNucleus\ChainMail\Mail\TextMail',
-                'BrightNucleus\ChainMail\Template\GenericTemplate',
+                TextMail::class,
+                GenericTemplate::class,
             ],
             [
                 'html',
                 'HeroTemplate',
                 'BrightNucleus\ChainMail\Mail\HTMLMail',
-                'BrightNucleus\ChainMail\Template\GenericTemplate',
+                GenericTemplate::class,
             ],
             [
                 'text',
                 'HeroTemplate',
-                'BrightNucleus\ChainMail\Mail\TextMail',
-                'BrightNucleus\ChainMail\Template\GenericTemplate',
+                TextMail::class,
+                GenericTemplate::class,
             ],
             [
                 'html',
                 'SidebarTemplate',
                 'BrightNucleus\ChainMail\Mail\HTMLMail',
-                'BrightNucleus\ChainMail\Template\GenericTemplate',
+                GenericTemplate::class,
             ],
             [
                 'text',
                 'SidebarTemplate',
-                'BrightNucleus\ChainMail\Mail\TextMail',
-                'BrightNucleus\ChainMail\Template\GenericTemplate',
+                TextMail::class,
+                GenericTemplate::class,
             ],
             [
                 'html',
                 'HeroSidebarTemplate',
                 'BrightNucleus\ChainMail\Mail\HTMLMail',
-                'BrightNucleus\ChainMail\Template\GenericTemplate',
+                GenericTemplate::class,
             ],
             [
                 'text',
                 'HeroSidebarTemplate',
-                'BrightNucleus\ChainMail\Mail\TextMail',
-                'BrightNucleus\ChainMail\Template\GenericTemplate',
+                TextMail::class,
+                GenericTemplate::class,
             ],
         ];
     }

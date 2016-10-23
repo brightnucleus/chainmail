@@ -48,16 +48,21 @@ class EmailAddress
      */
     public function __construct($email)
     {
-        if (false === filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            throw InvalidEmailAddress::from($email);
-        }
+        if ($email instanceof EmailAddress) {
+            $this->localPart = $email->getLocalPart();
+            $this->domain    = $email->getDomain();
+        } else {
+            if ( ! $this->isValid($email)) {
+                throw InvalidEmailAddress::from($email);
+            }
 
-        try {
-            $parts           = explode('@', $email);
-            $this->localPart = trim($parts[0]);
-            $this->domain    = new Domain(trim($parts[1]));
-        } catch (Exception $exception) {
-            throw InvalidEmailAddress::from($email);
+            try {
+                $parts           = explode('@', $email);
+                $this->localPart = trim($parts[0]);
+                $this->domain    = new Domain(trim($parts[1]));
+            } catch (Exception $exception) {
+                throw InvalidEmailAddress::from($email);
+            }
         }
     }
 
@@ -76,7 +81,7 @@ class EmailAddress
      *
      * @return Domain
      */
-    public function getDomainPart()
+    public function getDomain()
     {
         return $this->domain;
     }
@@ -88,7 +93,7 @@ class EmailAddress
      */
     public function getAddress()
     {
-        return $this->getLocalPart() . '@' . $this->getDomainPart();
+        return $this->getLocalPart() . '@' . $this->getDomain();
     }
 
     /**
@@ -99,5 +104,17 @@ class EmailAddress
     public function __toString()
     {
         return $this->getAddress();
+    }
+
+    /**
+     * Check whether an email is valid.
+     *
+     * @param string $email Email to check.
+     *
+     * @return bool Whether the email is valid.
+     */
+    protected function isValid($email)
+    {
+        return (bool)filter_var($email, FILTER_VALIDATE_EMAIL);
     }
 }

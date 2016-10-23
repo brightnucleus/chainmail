@@ -14,8 +14,8 @@
 		}
 	},
 	"require": {
-		"brightnucleus/config": "^0.4.5",
-		"brightnucleus/exceptions": "^0.2.4",
+		"brightnucleus/config": ">=0.4",
+		"brightnucleus/exceptions": ">=0.2",
 		"brightnucleus/view": ">=0.2",
 		"doctrine/collections": "^1.3"
 	},

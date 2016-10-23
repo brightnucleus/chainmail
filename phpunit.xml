@@ -1,5 +1,5 @@
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.8/phpunit.xsd"
+         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/5.6/phpunit.xsd"
          bootstrap="vendor/autoload.php"
          colors="true">
     <testsuites>
@@ -13,10 +13,15 @@
         <testsuite name="section">
         </testsuite>
         <testsuite name="support">
+            <file>tests/EmailAddressTest.php</file>
+            <file>tests/DomainTest.php</file>
         </testsuite>
         <testsuite name="template">
         </testsuite>
         <testsuite name="validator">
+        </testsuite>
+        <testsuite name="recipients">
+            <file>tests/RecipientsTest.php</file>
         </testsuite>
     </testsuites>
     <filter>
