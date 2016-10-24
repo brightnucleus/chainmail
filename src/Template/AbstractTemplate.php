@@ -11,7 +11,7 @@
 
 namespace BrightNucleus\ChainMail\Template;
 
-use BrightNucleus\Chainmail\Exception\FailedToInitialiseTemplate;
+use BrightNucleus\ChainMail\Exception\FailedToInitialiseTemplate;
 use BrightNucleus\ChainMail\Support\Factory;
 use BrightNucleus\ChainMail\Template;
 use BrightNucleus\Config\ConfigInterface;

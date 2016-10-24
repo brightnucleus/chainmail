@@ -11,7 +11,7 @@
 
 namespace BrightNucleus\ChainMail;
 
-use BrightNucleus\Chainmail\Exception\InvalidDomain;
+use BrightNucleus\ChainMail\Exception\InvalidDomain;
 use BrightNucleus\ChainMail\Support\Domain;
 
 /**

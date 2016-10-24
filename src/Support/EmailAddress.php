@@ -11,7 +11,7 @@
 
 namespace BrightNucleus\ChainMail\Support;
 
-use BrightNucleus\Chainmail\Exception\InvalidEmailAddress;
+use BrightNucleus\ChainMail\Exception\InvalidEmailAddress;
 use Exception;
 
 /**

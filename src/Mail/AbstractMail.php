@@ -11,7 +11,7 @@
 
 namespace BrightNucleus\ChainMail\Mail;
 
-use BrightNucleus\Chainmail\Exception\InvalidTemplate;
+use BrightNucleus\ChainMail\Exception\InvalidTemplate;
 use BrightNucleus\ChainMail\Mail;
 use BrightNucleus\ChainMail\Recipients;
 use BrightNucleus\ChainMail\Support\EmailAddress;

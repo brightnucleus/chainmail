@@ -2,14 +2,14 @@
 /**
  * Bright Nucleus Chainmail Component.
  *
- * @package   BrightNucleus\Chainmail
+ * @package   BrightNucleus\ChainMail
  * @author    Alain Schlesser <alain.schlesser@gmail.com>
  * @license   MIT
  * @link      http://www.brightnucleus.com/
  * @copyright 2016 Alain Schlesser, Bright Nucleus
  */
 
-namespace BrightNucleus\Chainmail\Exception;
+namespace BrightNucleus\ChainMail\Exception;
 
 use BrightNucleus\Exception\RuntimeException;
 
@@ -18,7 +18,7 @@ use BrightNucleus\Exception\RuntimeException;
  *
  * @since   1.0.0
  *
- * @package BrightNucleus\Chainmail\Exception
+ * @package BrightNucleus\ChainMail\Exception
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
 class FailedToInstantiateFactory extends RuntimeException implements ChainmailException

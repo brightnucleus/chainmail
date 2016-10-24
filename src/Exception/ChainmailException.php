@@ -9,7 +9,7 @@
  * @copyright 2016 Alain Schlesser, Bright Nucleus
  */
 
-namespace BrightNucleus\Chainmail\Exception;
+namespace BrightNucleus\ChainMail\Exception;
 
 use BrightNucleus\Exception\ExceptionInterface;
 
@@ -18,7 +18,7 @@ use BrightNucleus\Exception\ExceptionInterface;
  *
  * @since   1.0.0
  *
- * @package BrightNucleus\Chainmail\Exception
+ * @package BrightNucleus\ChainMail\Exception
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
 interface ChainmailException extends ExceptionInterface

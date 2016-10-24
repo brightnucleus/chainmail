@@ -11,7 +11,7 @@
 
 namespace BrightNucleus\ChainMail\Section;
 
-use BrightNucleus\Chainmail\Exception\FailedToInitialiseSection;
+use BrightNucleus\ChainMail\Exception\FailedToInitialiseSection;
 use BrightNucleus\ChainMail\Section;
 use BrightNucleus\Config\ConfigInterface;
 use BrightNucleus\View\ViewBuilder;

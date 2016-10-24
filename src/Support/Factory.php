@@ -11,8 +11,8 @@
 
 namespace BrightNucleus\ChainMail\Support;
 
-use BrightNucleus\Chainmail\Exception\FailedToInstantiateClass;
-use BrightNucleus\Chainmail\Exception\FailedToInstantiateFactory;
+use BrightNucleus\ChainMail\Exception\FailedToInstantiateClass;
+use BrightNucleus\ChainMail\Exception\FailedToInstantiateFactory;
 use BrightNucleus\Config\ConfigInterface;
 
 /**
