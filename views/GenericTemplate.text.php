@@ -2,7 +2,7 @@
 /**
  * GenericTemplate Text View.
  *
- * @package   BrightNucleus/Chainmail
+ * @package   BrightNucleus/ChainMail
  * @author    Alain Schlesser <alain.schlesser@gmail.com>
  * @license   MIT
  * @link      http://www.brightnucleus.com/

@@ -1,6 +1,6 @@
 <?php
 /**
- * Bright Nucleus Chainmail Component.
+ * Bright Nucleus ChainMail Component.
  *
  * @package   BrightNucleus\ChainMail
  * @author    Alain Schlesser <alain.schlesser@gmail.com>
@@ -21,7 +21,7 @@ use BrightNucleus\Exception\RuntimeException;
  * @package BrightNucleus\ChainMail\Exception
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
-class InvalidDomain extends RuntimeException implements ChainmailException
+class InvalidDomain extends RuntimeException implements ChainMailException
 {
 
     /**

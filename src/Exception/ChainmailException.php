@@ -1,8 +1,8 @@
 <?php
 /**
- * BrightNucleus Chainmail Component.
+ * BrightNucleus ChainMail Component.
  *
- * @package   BrightNucleus/Chainmail
+ * @package   BrightNucleus/ChainMail
  * @author    Alain Schlesser <alain.schlesser@gmail.com>
  * @license   MIT
  * @link      http://www.brightnucleus.com/
@@ -14,14 +14,14 @@ namespace BrightNucleus\ChainMail\Exception;
 use BrightNucleus\Exception\ExceptionInterface;
 
 /**
- * Interface ChainmailException.
+ * Interface ChainMailException.
  *
  * @since   1.0.0
  *
  * @package BrightNucleus\ChainMail\Exception
  * @author  Alain Schlesser <alain.schlesser@gmail.com>
  */
-interface ChainmailException extends ExceptionInterface
+interface ChainMailException extends ExceptionInterface
 {
 
 }

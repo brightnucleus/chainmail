@@ -1,4 +1,4 @@
-# Bright Nucleus Chainmail
+# Bright Nucleus ChainMail
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/brightnucleus/chainmail/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/brightnucleus/chainmail/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/brightnucleus/chainmail/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/brightnucleus/chainmail/?branch=master)
